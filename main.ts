@@ -23,6 +23,7 @@ function whoDidIt () {
         `)
     game.showLongText("You are an investagator. You have been hired to figure out who stole the cake. ", DialogLayout.Full)
     game.showLongText("Talk to suspects and when you think you have figured out who stole the cake hit the menu button to make your quess! ", DialogLayout.Full)
+    game.showLongText("WARNING: YOU CAN ONLY TALK TO EACH PERSON ONCE.", DialogLayout.Full)
     Investigator = sprites.create(img`
         . . . . . . . . . . . . . 
         . . f f f f f f f . . . . 
@@ -41,6 +42,7 @@ function whoDidIt () {
         . . . f f f f f . . . . . 
         . . . f f . f f . . . . . 
         `, SpriteKind.Player)
+    tiles.placeOnRandomTile(Investigator, sprites.dungeon.floorLight2)
     controller.moveSprite(Investigator)
     scene.cameraFollowSprite(Investigator)
     SuspectList = [
@@ -60,6 +62,29 @@ function whoDidIt () {
     "Marley",
     "Riki"
     ]
+    job = [
+    "lawyer",
+    "doctor",
+    "coach",
+    "teacher",
+    "government worker",
+    "janitor"
+    ]
+    relation = [
+    "I'm related to the person the party is for.",
+    "I'm a friend of the family ",
+    "I do the sound here",
+    "I'm with the catering company"
+    ]
+    alibi = [
+    "I was talking to " + SuspectList[randint(0, numberOfPeople)] + " when we heard a loud commotion. I'm still not sure what it was all about..",
+    "I was at the food table getting some snacks.",
+    "I was getting some punch.",
+    "I was talking to the birthday girl.",
+    "I was talking to the sound crew.",
+    "I was complimenting the chef."
+    ]
+    numberOfPeople = 14
     Person = sprites.create(img`
         . . . . . e e e e e . . . . . . 
         . . . . . 2 2 2 2 2 . . . . . . 
@@ -118,42 +143,47 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Suspect, function (sprite, other
     game3 = true
     times = 0
     while (times == 0) {
+        index = randint(0, numberOfPeople)
         decision = game.askForString("yes or no, would you like to ask for their name?", 3)
         if (decision == "yes") {
-            otherSprite.sayText("My name is Jeremy.")
+            otherSprite.sayText("My name is " + SuspectList[index])
+            SuspectList.removeAt(0)
+            numberOfPeople += -1
             pause(2000)
         }
         decision = game.askForString("yes or no, would you like to ask what their job is?", 3)
         if (decision == "yes") {
-            otherSprite.sayText("I am a lawyer")
+            otherSprite.sayText("I work as a" + job[randint(0, 5)])
             pause(2000)
         }
         decision = game.askForString("Would you like to ask why they went to the party", 3)
         if (decision == "yes") {
-            otherSprite.sayText("I'm a relative of the person who this party is for.")
+            otherSprite.sayText(relation[randint(0, 3)])
             pause(2000)
         }
         decision = game.askForString("yes or no, would you like to ask for an alibi?", 3)
         if (decision == "yes") {
-            otherSprite.sayText("I was talking to Cathy when we heard a loud commotion. ")
+            otherSprite.sayText(alibi[randint(0, 5)])
             pause(5000)
-            otherSprite.sayText("I'm still not sure what it was all about...")
-            pause(2000)
             otherSprite.sayText(":)")
             pause(2000)
         }
-        sprite.x += 5
-        otherSprite.sayText(":)")
+        sprites.destroy(otherSprite)
         times = 1
         number += 1
     }
 })
 let number = 0
 let decision = ""
+let index = 0
 let times = 0
 let guess = ""
 let game3 = false
 let Person: Sprite = null
+let numberOfPeople = 0
+let alibi: string[] = []
+let relation: string[] = []
+let job: string[] = []
 let SuspectList: string[] = []
 let Investigator: Sprite = null
 let chances = 0

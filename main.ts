@@ -63,6 +63,9 @@ function whoDidIt () {
         `, SpriteKind.Suspect)
     tiles.placeOnRandomTile(Person, sprites.dungeon.darkGroundCenter)
 }
+controller.menu.onEvent(ControllerButtonEvent.Pressed, function () {
+	
+})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Suspect, function (sprite, otherSprite) {
     times = 0
     while (times == 0) {
@@ -94,9 +97,10 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Suspect, function (sprite, other
                 pause(5000)
                 otherSprite.sayText("I'm still not sure what it was all about...")
                 pause(2000)
+                otherSprite.sayText(":)")
             }
         }
-        Investigator.x += 3
+        Investigator.x += 5
         times = 1
         number += 1
     }

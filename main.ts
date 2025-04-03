@@ -57,6 +57,7 @@ function whoDidIt () {
         . . . . f 1 f . f 1 f . . . . . 
         . . . . f f f . f f f . . . . . 
         `, SpriteKind.Player)
+    tiles.placeOnRandomTile(Person, sprites.dungeon.darkGroundCenter)
 }
 let Person: Sprite = null
 let Investigator: Sprite = null
@@ -67,7 +68,7 @@ while (game2 == 0) {
     if (choice == "yes") {
         game2 = 1
     } else {
-        choice = game.askForString("Do you want to play \"Unscramble? Yes or no?", 3)
+        choice = game.askForString("Do you want to play \"Unscramble?\" Yes or no?", 3)
         if (choice == "yes") {
             game2 = 2
         } else {

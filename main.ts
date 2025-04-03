@@ -43,7 +43,23 @@ function whoDidIt () {
         `, SpriteKind.Player)
     controller.moveSprite(Investigator)
     scene.cameraFollowSprite(Investigator)
-    number = 0
+    SuspectList = [
+    "Charlie",
+    "Avery",
+    "Jesse",
+    "Skylar",
+    "Taylor",
+    "Harper",
+    "Madison",
+    "Riley",
+    "Jayden",
+    "Finley",
+    "Rowan",
+    "Blythe",
+    "Briar",
+    "Marley",
+    "Riki"
+    ]
     Person = sprites.create(img`
         . . . . . e e e e e . . . . . . 
         . . . . . 2 2 2 2 2 . . . . . . 
@@ -63,6 +79,24 @@ function whoDidIt () {
         . . . . f f f . f f f . . . . . 
         `, SpriteKind.Suspect)
     tiles.placeOnRandomTile(Person, sprites.dungeon.darkGroundCenter)
+    Person = sprites.create(img`
+        . . . . . f f f f f . . . . . . 
+        . . . . . 8 8 8 7 8 . . . . . . 
+        . . . . f f f f f f f . . . . . 
+        . . . . f 4 f 4 f 4 f . . . . . 
+        . . . . . 4 4 4 4 4 . . . . . . 
+        . . . . . 4 2 4 2 4 . . . . . . 
+        . . . . . 4 4 2 4 4 . . . . . . 
+        . . . . . f f f f f . . . . . . 
+        . . . . f f f 1 f f f . . . . . 
+        . . e e f f f f f f f e e . . . 
+        . . e e f f f 1 f f f e e . . . 
+        . . . . f f f f f f f . . . . . 
+        . . . . f f f f f f f . . . . . 
+        . . . . f 1 f . f 1 f . . . . . 
+        . . . . f 1 f . f 1 f . . . . . 
+        . . . . f f f . f f f . . . . . 
+        `, SpriteKind.Suspect)
 }
 controller.menu.onEvent(ControllerButtonEvent.Pressed, function () {
     if (game3 == true) {
@@ -86,47 +120,41 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Suspect, function (sprite, other
     while (times == 0) {
         decision = game.askForString("yes or no, would you like to ask for their name?", 3)
         if (decision == "yes") {
-            if (number == 0) {
-                otherSprite.sayText("My name is Jeremy.")
-                pause(2000)
-            }
+            otherSprite.sayText("My name is Jeremy.")
+            pause(2000)
         }
         decision = game.askForString("yes or no, would you like to ask what their job is?", 3)
         if (decision == "yes") {
-            if (number == 0) {
-                otherSprite.sayText("I am a lawyer")
-                pause(2000)
-            }
+            otherSprite.sayText("I am a lawyer")
+            pause(2000)
         }
         decision = game.askForString("Would you like to ask why they went to the party", 3)
         if (decision == "yes") {
-            if (number == 0) {
-                otherSprite.sayText("I'm a relative of the person who this party is for.")
-                pause(2000)
-            }
+            otherSprite.sayText("I'm a relative of the person who this party is for.")
+            pause(2000)
         }
         decision = game.askForString("yes or no, would you like to ask for an alibi?", 3)
         if (decision == "yes") {
-            if (number == 0) {
-                otherSprite.sayText("I was talking to Cathy when we heard a loud commotion. ")
-                pause(5000)
-                otherSprite.sayText("I'm still not sure what it was all about...")
-                pause(2000)
-                otherSprite.sayText(":)")
-                pause(2000)
-            }
+            otherSprite.sayText("I was talking to Cathy when we heard a loud commotion. ")
+            pause(5000)
+            otherSprite.sayText("I'm still not sure what it was all about...")
+            pause(2000)
+            otherSprite.sayText(":)")
+            pause(2000)
         }
-        Investigator.x += 5
+        sprite.x += 5
+        otherSprite.sayText(":)")
         times = 1
         number += 1
     }
 })
+let number = 0
 let decision = ""
 let times = 0
 let guess = ""
 let game3 = false
 let Person: Sprite = null
-let number = 0
+let SuspectList: string[] = []
 let Investigator: Sprite = null
 let chances = 0
 let choice = ""
@@ -144,7 +172,7 @@ while (game2 == 0) {
             if (choice == "yes") {
                 game2 = 3
             } else {
-                game.splash("You must pick a game.")
+                game.splash("You MUST pick a game.")
             }
         }
     }

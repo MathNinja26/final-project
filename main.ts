@@ -64,8 +64,37 @@ function whoDidIt () {
     tiles.placeOnRandomTile(Person, sprites.dungeon.darkGroundCenter)
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Suspect, function (sprite, otherSprite) {
-	
+    times = 0
+    while (times == 0) {
+        decision = game.askForString("yes or no, would you like to ask for their name?", 3)
+        if (decision == "yes") {
+            if (number == 0) {
+                otherSprite.sayText("My name is Jeremy.")
+            }
+        }
+        decision = game.askForString("yes or no, would you like to ask what their job is?", 3)
+        if (decision == "yes") {
+            if (number == 0) {
+                otherSprite.sayText("I am a lawyer")
+            }
+        }
+        decision = game.askForString("yes or no, would you like to ask why they went to the party.", 3)
+        if (decision == "yes") {
+            if (number == 0) {
+                otherSprite.sayText("I'm a relative of the person who this party is for.")
+            }
+        }
+        decision = game.askForString("yes or no, would you like to ask for an alibi?", 3)
+        if (decision == "yes") {
+            if (number == 0) {
+                otherSprite.sayText("I am a lawyer")
+            }
+        }
+        times = 1
+    }
 })
+let decision = ""
+let times = 0
 let Person: Sprite = null
 let number = 0
 let Investigator: Sprite = null

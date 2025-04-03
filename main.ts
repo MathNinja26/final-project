@@ -18,7 +18,7 @@ function whoDidIt () {
         4 5 9 5 3 3 3 3 3 3 3 5 9 5 4 
         `)
     game.showLongText("You are an investagator. You have been hired to figure out who stole the cake. ", DialogLayout.Full)
-    game.showLongText("Talk to people and when you think you have figured out who stole the cake hit the menu button to make your quess! ", DialogLayout.Full)
+    game.showLongText("Talk to suspects and when you think you have figured out who stole the cake hit the menu button to make your quess! ", DialogLayout.Full)
     Investigator = sprites.create(img`
         . . . . . . . . . . . . . 
         . . f f f f f f f . . . . 
@@ -39,7 +39,26 @@ function whoDidIt () {
         `, SpriteKind.Player)
     controller.moveSprite(Investigator)
     scene.cameraFollowSprite(Investigator)
+    Person = sprites.create(img`
+        . . . . . e e e e e . . . . . . 
+        . . . . . 2 2 2 2 2 . . . . . . 
+        . . . . e e e e e e e . . . . . 
+        . . . . e 4 f 4 f 4 e . . . . . 
+        . . . . . 4 4 f 4 4 . . . . . . 
+        . . . . . 4 2 2 2 4 . . . . . . 
+        . . . . . e e e e e . . . . . . 
+        . . . . f f f f f f f . . . . . 
+        . . . f f 1 1 f 1 1 f f . . . . 
+        . e e f 1 1 1 1 1 1 1 f e e . . 
+        . e e f 1 1 1 f 1 1 1 f e e . . 
+        . . . f f 1 1 1 1 1 f f . . . . 
+        . . . . f f f f f f f . . . . . 
+        . . . . f 1 f . f 1 f . . . . . 
+        . . . . f 1 f . f 1 f . . . . . 
+        . . . . f f f . f f f . . . . . 
+        `, SpriteKind.Player)
 }
+let Person: Sprite = null
 let Investigator: Sprite = null
 let choice = ""
 let game2 = 0

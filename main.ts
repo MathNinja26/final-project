@@ -70,13 +70,14 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Suspect, function (sprite, other
         if (decision == "yes") {
             if (number == 0) {
                 otherSprite.sayText("My name is Jeremy.")
+                pause(2000)
             }
         }
         decision = game.askForString("yes or no, would you like to ask what their job is?", 3)
         if (decision == "yes") {
             if (number == 0) {
                 otherSprite.sayText("I am a lawyer")
-                pause(1000)
+                pause(2000)
             }
         }
         decision = game.askForString("Would you like to ask why they went to the party", 3)

@@ -1,3 +1,6 @@
+namespace SpriteKind {
+    export const Suspect = SpriteKind.create()
+}
 function whoDidIt () {
     tiles.setCurrentTilemap(tilemap`level1`)
     game.setDialogFrame(img`
@@ -39,6 +42,7 @@ function whoDidIt () {
         `, SpriteKind.Player)
     controller.moveSprite(Investigator)
     scene.cameraFollowSprite(Investigator)
+    number = 0
     Person = sprites.create(img`
         . . . . . e e e e e . . . . . . 
         . . . . . 2 2 2 2 2 . . . . . . 
@@ -56,10 +60,14 @@ function whoDidIt () {
         . . . . f 1 f . f 1 f . . . . . 
         . . . . f 1 f . f 1 f . . . . . 
         . . . . f f f . f f f . . . . . 
-        `, SpriteKind.Player)
+        `, SpriteKind.Suspect)
     tiles.placeOnRandomTile(Person, sprites.dungeon.darkGroundCenter)
 }
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Suspect, function (sprite, otherSprite) {
+	
+})
 let Person: Sprite = null
+let number = 0
 let Investigator: Sprite = null
 let choice = ""
 let game2 = 0

@@ -153,7 +153,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Suspect, function (sprite, other
         }
         decision = game.askForString("yes or no, would you like to ask what their job is?", 3)
         if (decision == "yes") {
-            otherSprite.sayText("I work as a" + job[randint(0, 5)])
+            otherSprite.sayText("I work as a " + job[randint(0, 5)])
             pause(2000)
         }
         decision = game.askForString("Would you like to ask why they went to the party", 3)

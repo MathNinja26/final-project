@@ -3,6 +3,7 @@ namespace SpriteKind {
 }
 function whoDidIt () {
     tiles.setCurrentTilemap(tilemap`level1`)
+    chances = 3
     game.setDialogFrame(img`
         4 5 9 5 3 3 3 3 3 3 3 5 9 5 4 
         5 9 5 b 6 1 e e e 1 6 b 5 9 5 
@@ -64,7 +65,7 @@ function whoDidIt () {
     tiles.placeOnRandomTile(Person, sprites.dungeon.darkGroundCenter)
 }
 controller.menu.onEvent(ControllerButtonEvent.Pressed, function () {
-	
+    guess = game.askForString("Who is the suspect?")
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Suspect, function (sprite, otherSprite) {
     times = 0
@@ -93,11 +94,12 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Suspect, function (sprite, other
         decision = game.askForString("yes or no, would you like to ask for an alibi?", 3)
         if (decision == "yes") {
             if (number == 0) {
-                otherSprite.sayText("I was talking to my friend when we heard a loud commotion. ")
+                otherSprite.sayText("I was talking to Cathy when we heard a loud commotion. ")
                 pause(5000)
                 otherSprite.sayText("I'm still not sure what it was all about...")
                 pause(2000)
                 otherSprite.sayText(":)")
+                pause(2000)
             }
         }
         Investigator.x += 5
@@ -107,9 +109,11 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Suspect, function (sprite, other
 })
 let decision = ""
 let times = 0
+let guess = ""
 let Person: Sprite = null
 let number = 0
 let Investigator: Sprite = null
+let chances = 0
 let choice = ""
 let game2 = 0
 while (game2 == 0) {

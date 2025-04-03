@@ -84,7 +84,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Suspect, function (sprite, other
         if (decision == "yes") {
             if (number == 0) {
                 otherSprite.sayText("I'm a relative of the person who this party is for.")
-                pause(200)
+                pause(2000)
             }
         }
         decision = game.askForString("yes or no, would you like to ask for an alibi?", 3)

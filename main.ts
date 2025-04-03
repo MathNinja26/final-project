@@ -65,9 +65,23 @@ function whoDidIt () {
     tiles.placeOnRandomTile(Person, sprites.dungeon.darkGroundCenter)
 }
 controller.menu.onEvent(ControllerButtonEvent.Pressed, function () {
-    guess = game.askForString("Who is the suspect?")
+    if (game3 == true) {
+        guess = game.askForString("Who is the suspect?")
+        if (guess == "Fanny") {
+            game.gameOver(true)
+        } else {
+            chances += -1
+            if (chances == 0) {
+                game.gameOver(false)
+            } else {
+                game.splash("Try again")
+                game.splash("You have " + chances + " chances left.")
+            }
+        }
+    }
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Suspect, function (sprite, otherSprite) {
+    game3 = true
     times = 0
     while (times == 0) {
         decision = game.askForString("yes or no, would you like to ask for their name?", 3)
@@ -110,6 +124,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Suspect, function (sprite, other
 let decision = ""
 let times = 0
 let guess = ""
+let game3 = false
 let Person: Sprite = null
 let number = 0
 let Investigator: Sprite = null

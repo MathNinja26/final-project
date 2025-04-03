@@ -122,6 +122,7 @@ function whoDidIt () {
         . . . . f 1 f . f 1 f . . . . . 
         . . . . f f f . f f f . . . . . 
         `, SpriteKind.Suspect)
+    tiles.placeOnRandomTile(Person, assets.tile`transparency16`)
 }
 controller.menu.onEvent(ControllerButtonEvent.Pressed, function () {
     if (game3 == true) {

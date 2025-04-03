@@ -76,21 +76,28 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Suspect, function (sprite, other
         if (decision == "yes") {
             if (number == 0) {
                 otherSprite.sayText("I am a lawyer")
+                pause(1000)
             }
         }
-        decision = game.askForString("yes or no, would you like to ask why they went to the party.", 3)
+        decision = game.askForString("Would you like to ask why they went to the party", 3)
         if (decision == "yes") {
             if (number == 0) {
                 otherSprite.sayText("I'm a relative of the person who this party is for.")
+                pause(200)
             }
         }
         decision = game.askForString("yes or no, would you like to ask for an alibi?", 3)
         if (decision == "yes") {
             if (number == 0) {
-                otherSprite.sayText("I am a lawyer")
+                otherSprite.sayText("I was talking to my friend when we heard a loud commotion. ")
+                pause(5000)
+                otherSprite.sayText("I'm still not sure what it was all about...")
+                pause(2000)
             }
         }
+        Investigator.x += 3
         times = 1
+        number += 1
     }
 })
 let decision = ""

@@ -18,7 +18,28 @@ function whoDidIt () {
         4 5 9 5 3 3 3 3 3 3 3 5 9 5 4 
         `)
     game.showLongText("You are an investagator. You have been hired to figure out who stole the cake. ", DialogLayout.Full)
+    game.showLongText("Talk to people and when you think you have figured out who stole the cake hit the menu button to make your quess! ", DialogLayout.Full)
+    Investigator = sprites.create(img`
+        . . . . . . . . . . . . . 
+        . . f f f f f f f . . . . 
+        . . f f f f f f f . . . . 
+        . f f f f f f f f f . . . 
+        . 2 2 2 2 2 2 2 2 2 . . . 
+        f f f f f f f f f f f . . 
+        . f e e e e e e e f . . . 
+        . f 4 b 4 4 4 b 4 f . . . 
+        . f 4 1 4 4 4 1 4 f . . . 
+        . f 4 4 4 4 4 4 4 f . . . 
+        . f f f e f e f f f . . . 
+        4 4 f e e e e e f 4 4 . . 
+        4 4 f e e f e e f 4 4 . . 
+        . . f e e e e e f . . . . 
+        . . . f f f f f . . . . . 
+        . . . f f . f f . . . . . 
+        `, SpriteKind.Player)
+    controller.moveSprite(Investigator)
 }
+let Investigator: Sprite = null
 let choice = ""
 let game2 = 0
 while (game2 == 0) {

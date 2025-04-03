@@ -38,6 +38,7 @@ function whoDidIt () {
         . . . f f . f f . . . . . 
         `, SpriteKind.Player)
     controller.moveSprite(Investigator)
+    scene.cameraFollowSprite(Investigator)
 }
 let Investigator: Sprite = null
 let choice = ""

@@ -1,1 +1,1 @@
-
+let choice = game.askForString("")

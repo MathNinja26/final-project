@@ -1,3 +1,6 @@
+function whoDidIt () {
+    tiles.setCurrentTilemap(tilemap`level1`)
+}
 let choice = ""
 let game2 = 0
 while (game2 == 0) {
@@ -24,6 +27,6 @@ while (game2 == 0) {
     	
     }
     if (game2 == 3) {
-    	
+        whoDidIt()
     }
 }

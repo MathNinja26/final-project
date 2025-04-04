@@ -1,6 +1,9 @@
 namespace SpriteKind {
     export const Suspect = SpriteKind.create()
 }
+function wordUnscramble () {
+	
+}
 function whoDidIt () {
     game3 = true
     tiles.setCurrentTilemap(tilemap`level1`)
@@ -344,7 +347,7 @@ while (game2 == 0) {
     	
     }
     if (game2 == 2) {
-    	
+        wordUnscramble()
     }
     if (game2 == 3) {
         whoDidIt()

@@ -2,7 +2,19 @@ namespace SpriteKind {
     export const Suspect = SpriteKind.create()
 }
 function wordUnscramble () {
-	
+    wordList = [
+    "house",
+    "plane",
+    "capital",
+    "hopeless",
+    "flippant",
+    "definitely",
+    "calendar",
+    "achieve",
+    "indubitably",
+    "pneumonoultramicroscopicsilicovolcanoconiosis"
+    ]
+    game.splash(wordList._pickRandom())
 }
 function whoDidIt () {
     game3 = true
@@ -324,6 +336,7 @@ let SuspectList: string[] = []
 let Investigator: Sprite = null
 let chances = 0
 let game3 = false
+let wordList: string[] = []
 let choice = ""
 let game2 = 0
 while (game2 == 0) {

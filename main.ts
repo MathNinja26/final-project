@@ -122,7 +122,140 @@ function whoDidIt () {
         . . . . f 1 f . f 1 f . . . . . 
         . . . . f f f . f f f . . . . . 
         `, SpriteKind.Suspect)
-    tiles.placeOnRandomTile(Person, assets.tile`transparency16`)
+    tiles.placeOnRandomTile(Person, sprites.dungeon.darkGroundCenter)
+    Person = sprites.create(img`
+        . . . . . f f f f f . . . . . . 
+        . . . . . b b b a b . . . . . . 
+        . . . . f f f f f f f . . . . . 
+        . . . . f 4 f 4 f 4 f . . . . . 
+        . . . . . 4 4 f 4 4 . . . . . . 
+        . . . . . 4 2 4 2 4 . . . . . . 
+        . . . . . 4 2 2 2 4 . . . . . . 
+        . . . . . 7 7 1 7 7 . . . . . . 
+        . . . . 7 7 7 7 7 7 7 . . . . . 
+        . . e e 7 7 7 1 7 7 7 e e . . . 
+        . . e e 7 7 7 7 7 7 7 e e . . . 
+        . . . . 7 7 7 1 7 7 7 . . . . . 
+        . . . . 7 7 7 7 7 7 7 . . . . . 
+        . . . . f 1 f . f 1 f . . . . . 
+        . . . . f 1 f . f 1 f . . . . . 
+        . . . . f f f . f f f . . . . . 
+        `, SpriteKind.Suspect)
+    tiles.placeOnRandomTile(Person, sprites.dungeon.darkGroundCenter)
+    Person = sprites.create(img`
+        . . . . . f f f f f . . . . . . 
+        . . . . . b b b a b . . . . . . 
+        . . . . f f f f f f f . . . . . 
+        . . . . f e f e f e f . . . . . 
+        . . . . . e e f e e . . . . . . 
+        . . . . . e e e e e . . . . . . 
+        . . . . . e 2 2 2 e . . . . . . 
+        . . . . . f f 1 f f . . . . . . 
+        . . . . f f f f f f f . . . . . 
+        . . e e f f f 1 f f f e e . . . 
+        . . e e f f f f f f f e e . . . 
+        . . . . f f f 1 f f f . . . . . 
+        . . . . f f f f f f f . . . . . 
+        . . . . f 1 f . f 1 f . . . . . 
+        . . . . f 1 f . f 1 f . . . . . 
+        . . . . f f f . f f f . . . . . 
+        `, SpriteKind.Suspect)
+    tiles.placeOnRandomTile(Person, sprites.dungeon.darkGroundCenter)
+    Person = sprites.create(img`
+        . . . . . f f f f f . . . . . . 
+        . . . . . b b b a b . . . . . . 
+        . . . . f f f f f f f . . . . . 
+        . . . . f e f e f e f . . . . . 
+        . . . . . e e f e e . . . . . . 
+        . . . . . e e e e e . . . . . . 
+        . . . . . e 2 2 2 e . . . . . . 
+        . . . . . f f f f f . . . . . . 
+        . . . . f 1 1 f 1 1 f . . . . . 
+        . . e e f 1 1 1 1 1 f e e . . . 
+        . . e e f 1 1 f 1 1 f e e . . . 
+        . . . . f 1 1 1 1 1 f . . . . . 
+        . . . . f f f f f f f . . . . . 
+        . . . . f 1 f . f 1 f . . . . . 
+        . . . . f 1 f . f 1 f . . . . . 
+        . . . . f f f . f f f . . . . . 
+        `, SpriteKind.Suspect)
+    tiles.placeOnRandomTile(Person, sprites.dungeon.darkGroundCenter)
+    Person = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . f f . f f . . . . . . 
+        . . . . f f f f f f f . . . . . 
+        . . . f f e 9 e 9 e f f . . . . 
+        . . . f f e e e e e f f . . . . 
+        . . f f f e 2 2 2 e f f f . . . 
+        . . f f f f f f f f f f f . . . 
+        . . . . f 1 1 f 1 1 f . . . . . 
+        . . e e f 1 1 1 1 1 f e e . . . 
+        . . e e f 1 1 f 1 1 f e e . . . 
+        . . . . f 1 1 1 1 1 f . . . . . 
+        . . . . f f f f f f f . . . . . 
+        . . . . f 1 f . f 1 f . . . . . 
+        . . . . f 1 f . f 1 f . . . . . 
+        . . . . f f f . f f f . . . . . 
+        `, SpriteKind.Suspect)
+    tiles.placeOnRandomTile(Person, sprites.dungeon.darkGroundCenter)
+    Person = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . 2 2 . 2 2 . . . . . . 
+        . . . . 2 2 2 2 2 2 2 . . . . . 
+        . . . 2 2 e 9 e 9 e 2 2 . . . . 
+        . . . 2 2 e e e e e 2 2 . . . . 
+        . . 2 2 2 e 2 2 2 e 2 2 2 . . . 
+        . . 2 2 2 f f f f f 2 2 2 . . . 
+        . . . . f 1 1 f 1 1 f . . . . . 
+        . . e e f 1 1 1 1 1 f e e . . . 
+        . . e e f 1 1 f 1 1 f e e . . . 
+        . . . . f 1 1 1 1 1 f . . . . . 
+        . . . . f f f f f f f . . . . . 
+        . . . . f 1 f . f 1 f . . . . . 
+        . . . . f 1 f . f 1 f . . . . . 
+        . . . . f f f . f f f . . . . . 
+        `, SpriteKind.Suspect)
+    tiles.placeOnRandomTile(Person, sprites.dungeon.darkGroundCenter)
+    Person = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . f f . f f . . . . . . 
+        . . . . f f f f f f f . . . . . 
+        . . . f f 4 9 4 9 4 f f . . . . 
+        . . . f f 4 4 4 4 4 f f . . . . 
+        . . f f f 4 2 2 2 4 f f f . . . 
+        . . f f f f f f f f f f f . . . 
+        . . . . f 1 1 f 1 1 f . . . . . 
+        . . 4 4 f 1 1 1 1 1 f 4 4 . . . 
+        . . 4 4 f 1 1 f 1 1 f 4 4 . . . 
+        . . . . f 1 1 1 1 1 f . . . . . 
+        . . . . f f f f f f f . . . . . 
+        . . . . f 1 f . f 1 f . . . . . 
+        . . . . f 1 f . f 1 f . . . . . 
+        . . . . f f f . f f f . . . . . 
+        `, SpriteKind.Suspect)
+    tiles.placeOnRandomTile(Person, sprites.dungeon.darkGroundCenter)
+    Person = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . f f . f f . . . . . . 
+        . . . . f f f f f f f . . . . . 
+        . . . f f e 9 e 9 e f f . . . . 
+        . . . f f e e e e e f f . . . . 
+        . . f f f e 2 2 2 e f f f . . . 
+        . . f f f f f f f f f f f . . . 
+        . . . . f 1 1 f 1 1 f . . . . . 
+        . . e e f 1 1 1 1 1 f e e . . . 
+        . . e e f 1 1 f 1 1 f e e . . . 
+        . . . . f 1 1 1 1 1 f . . . . . 
+        . . . . f f f f f f f . . . . . 
+        . . . . f 1 f . f 1 f . . . . . 
+        . . . . f 1 f . f 1 f . . . . . 
+        . . . . f f f . f f f . . . . . 
+        `, SpriteKind.Suspect)
+    tiles.placeOnRandomTile(Person, sprites.dungeon.darkGroundCenter)
 }
 controller.menu.onEvent(ControllerButtonEvent.Pressed, function () {
     if (game3 == true) {
@@ -165,7 +298,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Suspect, function (sprite, other
         decision = game.askForString("yes or no, would you like to ask for an alibi?", 3)
         if (decision == "yes") {
             otherSprite.sayText(alibi[randint(0, 5)])
-            pause(5000)
+            pause(5500)
             otherSprite.sayText(":)")
             pause(2000)
         }

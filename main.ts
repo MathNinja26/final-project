@@ -2,6 +2,7 @@ namespace SpriteKind {
     export const Suspect = SpriteKind.create()
 }
 function whoDidIt () {
+    game3 = true
     tiles.setCurrentTilemap(tilemap`level1`)
     chances = 3
     game.setDialogFrame(img`
@@ -274,7 +275,6 @@ controller.menu.onEvent(ControllerButtonEvent.Pressed, function () {
     }
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Suspect, function (sprite, otherSprite) {
-    game3 = true
     times = 0
     while (times == 0) {
         index = randint(0, numberOfPeople)
@@ -312,7 +312,6 @@ let decision = ""
 let index = 0
 let times = 0
 let guess = ""
-let game3 = false
 let Person: Sprite = null
 let numberOfPeople = 0
 let alibi: string[] = []
@@ -321,6 +320,7 @@ let job: string[] = []
 let SuspectList: string[] = []
 let Investigator: Sprite = null
 let chances = 0
+let game3 = false
 let choice = ""
 let game2 = 0
 while (game2 == 0) {

@@ -88,14 +88,29 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.birthdayGirl, function (sprite, 
 })
 function thisORThat () {
     scene.setBackgroundColor(3)
-    Cats = game.askForString("Do you prefer Cats or Dogs?")
+    Cats = game.askForString("Do you prefer Cats or Dogs?", 4)
     if (Cats == "Cats") {
         game.splash("41% of people prefer cats.")
         pause(500)
-    } else {
+    } else if (Cats == "Dogs") {
         game.splash("59% of people prefer dogs")
         pause(500)
+    } else {
+        game.splash("That is not a valid answer.")
+        game.splash("Moving to next question")
     }
+    red = game.askForString("Do you like Red or Blue better", 4)
+    if (red == "Red") {
+        game.splash("22% of people like red better ")
+        pause(500)
+    } else if (red == "Blue") {
+        game.splash("78% like blue better")
+        pause(500)
+    } else {
+        game.splash("That is not a valid answer.")
+        game.splash("Moving to next question")
+    }
+    red = game.askForString("Do you like Red or Blue better", 4)
 }
 function wordUnscramble () {
     wordList = [
@@ -305,6 +320,7 @@ let Person: Sprite = null
 let Investigator: Sprite = null
 let game3 = false
 let wordList: string[] = []
+let red = ""
 let Cats = ""
 let decision = ""
 let numberOfPeople = 0

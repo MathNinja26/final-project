@@ -1,5 +1,6 @@
 namespace SpriteKind {
     export const Suspect = SpriteKind.create()
+    export const birthdayGirl = SpriteKind.create()
 }
 function wordUnscramble () {
     wordList = [
@@ -272,6 +273,44 @@ function whoDidIt () {
         . . . . f f f . f f f . . . . . 
         `, SpriteKind.Suspect)
     tiles.placeOnRandomTile(Person, sprites.dungeon.darkGroundCenter)
+    Jane = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . 3 3 . 3 3 . . . . . . 
+        . . . . 3 3 3 3 3 3 3 . . . . . 
+        . . . 3 3 4 f 4 f 4 3 3 . . . . 
+        . . . 3 3 4 4 4 4 4 3 3 . . . . 
+        . . 3 3 3 4 2 2 2 4 3 3 3 . . . 
+        . . 3 3 3 6 a 6 a 6 3 3 3 . . . 
+        . . . . . a 6 a 6 a . . . . . . 
+        . 4 4 4 a 6 a 6 a 6 a 4 4 4 . . 
+        . 4 4 4 6 a 6 a 6 a 6 4 4 4 . . 
+        . . . 6 a 6 a 6 a 6 a 6 . . . . 
+        . . . a 6 a 6 a 6 a 6 a . . . . 
+        . . a 6 a 6 a 6 a 6 a 6 a . . . 
+        . . 6 a 6 a 6 a 6 a 6 a 6 . . . 
+        . 6 a 6 a 6 a 6 a 6 a 6 a 6 . . 
+        . . . . 4 4 . . . 4 4 . . . . . 
+        `, SpriteKind.birthdayGirl)
+    tiles.placeOnRandomTile(Jane, sprites.dungeon.darkGroundCenter)
+    Fanny = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . f f . f f . . . . . . 
+        . . . . f f f f f f f . . . . . 
+        . . . f f 4 9 4 9 4 f f . . . . 
+        . . . f f 4 4 4 4 4 f f . . . . 
+        . . f f f 4 2 2 2 4 f f f . . . 
+        . . f f f c 7 c 7 c f f f . . . 
+        . . . . . 7 c 7 c 7 . . . . . . 
+        . 4 4 4 7 c 7 c 7 c 7 4 4 4 . . 
+        . 4 4 4 c 7 c 7 c 7 c 4 4 4 . . 
+        . . . c 7 c 7 c 7 c 7 c . . . . 
+        . . . 7 c 7 c 7 c 7 c 7 . . . . 
+        . . 7 c 7 c 7 c 7 c 7 c 7 . . . 
+        . . c 7 c 7 c 7 c 7 c 7 c . . . 
+        . 7 7 c 7 c 7 c 7 c 7 c 7 c . . 
+        . . . . 4 4 . . . 4 4 . . . . . 
+        `, SpriteKind.birthdayGirl)
+    tiles.placeOnRandomTile(Fanny, sprites.dungeon.darkGroundCenter)
 }
 controller.menu.onEvent(ControllerButtonEvent.Pressed, function () {
     if (game3 == true) {
@@ -281,7 +320,6 @@ controller.menu.onEvent(ControllerButtonEvent.Pressed, function () {
         } else {
             chances += -1
             if (chances == 0) {
-                game.splash("Game over, try again some other time!")
                 game.gameOver(false)
             } else {
                 game.splash("Try again")
@@ -328,6 +366,8 @@ let decision = ""
 let index = 0
 let times = 0
 let guess = ""
+let Fanny: Sprite = null
+let Jane: Sprite = null
 let Person: Sprite = null
 let numberOfPeople = 0
 let alibi: string[] = []

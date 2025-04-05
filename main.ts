@@ -309,17 +309,48 @@ controller.menu.onEvent(ControllerButtonEvent.Pressed, function () {
     }
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.guilty, function (sprite, otherSprite) {
-    decision = game.askForString("Would you like to ask for her name?", 3)
-    if (decision == "yes") {
-        otherSprite.sayText("Uh... Fanny")
-        pause(1000)
-    }
-    decision = game.askForString("Would you like to ask for an alibi?", 3)
-    if (decision == "yes") {
-        otherSprite.sayText("Uh... I don't remember... definitly...")
-        pause(1500)
-        otherSprite.sayText("...Yeah...")
-        pause(1000)
+    points = 0
+    while (points == 0) {
+        points = 1
+        decision = game.askForString("Would you like to ask for her name?", 3)
+        if (decision == "yes") {
+            otherSprite.sayText("Uh... Fanny")
+            pause(1000)
+            while (points == 1) {
+                points = 0
+                decision = game.askForString("Would you like to ask for an alibi?", 3)
+                if (decision == "yes") {
+                    otherSprite.sayText("Uh... I don't remember... definitly...")
+                    pause(1500)
+                    otherSprite.sayText("...Yeah...")
+                    pause(1000)
+                } else if (decision == "no") {
+                    pause(100)
+                } else {
+                    points = 1
+                    game.splash("That is not a valid answer.")
+                }
+            }
+        } else if (decision == "no") {
+            while (points == 1) {
+                points = 0
+                decision = game.askForString("Would you like to ask for an alibi?", 3)
+                if (decision == "yes") {
+                    otherSprite.sayText("Uh... I don't remember... definitly...")
+                    pause(1500)
+                    otherSprite.sayText("...Yeah...")
+                    pause(1000)
+                } else if (decision == "no") {
+                    pause(100)
+                } else {
+                    points = 1
+                    game.splash("That is not a valid answer.")
+                }
+            }
+        } else {
+            points = 0
+            game.splash("That is not a valid answer.")
+        }
     }
     game.showLongText("Fanny quickly goes away, clearly uncomfortable", DialogLayout.Bottom)
     sprites.destroy(otherSprite)

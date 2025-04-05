@@ -1,6 +1,7 @@
 namespace SpriteKind {
     export const Suspect = SpriteKind.create()
     export const birthdayGirl = SpriteKind.create()
+    export const guilty = SpriteKind.create()
 }
 sprites.onOverlap(SpriteKind.Player, SpriteKind.birthdayGirl, function (sprite, otherSprite) {
     sprite.sayText("Hi.")
@@ -315,7 +316,7 @@ function whoDidIt () {
         . . c 7 c 7 c 7 c 7 c 7 c . . . 
         . 7 7 c 7 c 7 c 7 c 7 c 7 c . . 
         . . . . 4 4 . . . 4 4 . . . . . 
-        `, SpriteKind.birthdayGirl)
+        `, SpriteKind.guilty)
     tiles.placeOnRandomTile(Fanny, sprites.dungeon.darkGroundCenter)
 }
 controller.menu.onEvent(ControllerButtonEvent.Pressed, function () {

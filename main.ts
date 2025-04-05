@@ -110,7 +110,7 @@ function thisORThat () {
         game.splash("That is not a valid answer.")
         game.splash("Moving to next question")
     }
-    red = game.askForString("Do you like Red or Blue better", 4)
+    travel = game.askForString("Would you prefer to go to Japan or London", 4)
 }
 function wordUnscramble () {
     wordList = [
@@ -320,6 +320,7 @@ let Person: Sprite = null
 let Investigator: Sprite = null
 let game3 = false
 let wordList: string[] = []
+let travel = ""
 let red = ""
 let Cats = ""
 let decision = ""

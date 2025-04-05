@@ -23,6 +23,20 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.birthdayGirl, function (sprite, 
     pause(1000)
     otherSprite.sayText("*sob sob*")
     pause(500)
+    game.splash("You recognise this girl as being the birhtday girl, Cadence.")
+    decision = game.askForString("Would you like to ask her what is wrong", 3)
+    if (decision == "yes") {
+        otherSprite.sayText("Some other lady wore a dress to my party and now my cake is gone.")
+        pause(5500)
+    }
+    decision = game.askForString("Would you like to ask her when the cake dissapeared", 3)
+    if (decision == "yes") {
+        otherSprite.sayText("Well I was talking to my mom, and I was keeping an eye on the other lady wearing a dress")
+        pause(5500)
+        otherSprite.sayText("And I lost track of her for a minute and then I realized that the cake was gone")
+        pause(5500)
+    }
+    game.showLongText("Cadence runs out of the room, clearly still upset about how her party turned out.", DialogLayout.Full)
 })
 function wordUnscramble () {
     wordList = [
@@ -374,7 +388,6 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Suspect, function (sprite, other
     }
 })
 let number = 0
-let decision = ""
 let index = 0
 let times = 0
 let guess = ""
@@ -389,6 +402,7 @@ let SuspectList: string[] = []
 let Investigator: Sprite = null
 let game3 = false
 let wordList: string[] = []
+let decision = ""
 let chances = 0
 let optionTwo = ""
 let optionOne = ""

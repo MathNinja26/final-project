@@ -3,6 +3,12 @@ namespace SpriteKind {
     export const birthdayGirl = SpriteKind.create()
     export const guilty = SpriteKind.create()
 }
+function instructions () {
+    game.showLongText("You are an investagator. You have been hired to figure out who stole the cake. ", DialogLayout.Full)
+    game.showLongText("Talk to suspects and when you think you have figured out who stole the cake hit the menu button to make your quess! ", DialogLayout.Full)
+    game.showLongText("When you guess put the person's name that you think did it.", DialogLayout.Full)
+    game.showLongText("WARNING: YOU CAN ONLY TALK TO EACH PERSON ONCE.", DialogLayout.Full)
+}
 function isItRight (text: string) {
     optionOne = "Fanny"
     optionTwo = "fanny"
@@ -18,23 +24,64 @@ function isItRight (text: string) {
         }
     }
 }
+function createFourArrays () {
+    relation = [
+    "I'm related to the person the party is for.",
+    "I'm a friend of the family ",
+    "I do the sound here",
+    "I'm with the catering company"
+    ]
+    SuspectList = [
+    "Charlie",
+    "Avery",
+    "Jesse",
+    "Skylar",
+    "Taylor",
+    "Harper",
+    "Madison",
+    "Riley",
+    "Jayden",
+    "Finley",
+    "Rowan",
+    "Blythe",
+    "Briar",
+    "Marley",
+    "Riki"
+    ]
+    job = [
+    "lawyer",
+    "doctor",
+    "coach",
+    "teacher",
+    "government worker",
+    "janitor"
+    ]
+    alibi = [
+    "I was talking to " + SuspectList[randint(0, numberOfPeople)] + " when we heard a loud commotion. I'm still not sure what it was all about..",
+    "I was at the food table getting some snacks.",
+    "I was getting some punch.",
+    "I was talking to the birthday girl.",
+    "I was talking to the sound crew.",
+    "I was complimenting the chef."
+    ]
+}
 sprites.onOverlap(SpriteKind.Player, SpriteKind.birthdayGirl, function (sprite, otherSprite) {
-    sprite.sayText("Hi.")
-    pause(1000)
+    sprite.sayText("Hi.", 500, false)
+    pause(100)
     otherSprite.sayText("*sob sob*")
     pause(500)
-    game.splash("You recognise this girl as being the birhtday girl, Cadence.")
+    game.showLongText("You recognise this girl as being the birthday girl, Cadence.", DialogLayout.Full)
     decision = game.askForString("Would you like to ask her what is wrong", 3)
     if (decision == "yes") {
         otherSprite.sayText("Some other lady wore a dress to my party and now my cake is gone.")
-        pause(5500)
+        pause(2500)
     }
     decision = game.askForString("Would you like to ask her when the cake dissapeared", 3)
     if (decision == "yes") {
         otherSprite.sayText("Well I was talking to my mom, and I was keeping an eye on the other lady wearing a dress")
-        pause(5500)
+        pause(3500)
         otherSprite.sayText("And I lost track of her for a minute and then I realized that the cake was gone")
-        pause(5500)
+        pause(3500)
     }
     game.showLongText("Cadence runs out of the room, clearly still upset about how her party turned out.", DialogLayout.Full)
     sprites.destroy(otherSprite)
@@ -75,10 +122,7 @@ function whoDidIt () {
         5 9 5 b 6 1 e e e 1 6 b 5 9 5 
         4 5 9 5 3 3 3 3 3 3 3 5 9 5 4 
         `)
-    game.showLongText("You are an investagator. You have been hired to figure out who stole the cake. ", DialogLayout.Full)
-    game.showLongText("Talk to suspects and when you think you have figured out who stole the cake hit the menu button to make your quess! ", DialogLayout.Full)
-    game.showLongText("When you guess put the person's name that you think did it.", DialogLayout.Full)
-    game.showLongText("WARNING: YOU CAN ONLY TALK TO EACH PERSON ONCE.", DialogLayout.Full)
+    instructions()
     Investigator = sprites.create(img`
         . . . . . . . . . . . . . 
         . . f f f f f f f . . . . 
@@ -97,220 +141,53 @@ function whoDidIt () {
         . . . f f f f f . . . . . 
         . . . f f . f f . . . . . 
         `, SpriteKind.Player)
-    tiles.placeOnRandomTile(Investigator, sprites.dungeon.floorLight2)
+    tiles.placeOnTile(Investigator, tiles.getTileLocation(14, 14))
     controller.moveSprite(Investigator)
     scene.cameraFollowSprite(Investigator)
-    SuspectList = [
-    "Charlie",
-    "Avery",
-    "Jesse",
-    "Skylar",
-    "Taylor",
-    "Harper",
-    "Madison",
-    "Riley",
-    "Jayden",
-    "Finley",
-    "Rowan",
-    "Blythe",
-    "Briar",
-    "Marley",
-    "Riki"
-    ]
-    job = [
-    "lawyer",
-    "doctor",
-    "coach",
-    "teacher",
-    "government worker",
-    "janitor"
-    ]
-    relation = [
-    "I'm related to the person the party is for.",
-    "I'm a friend of the family ",
-    "I do the sound here",
-    "I'm with the catering company"
-    ]
-    alibi = [
-    "I was talking to " + SuspectList[randint(0, numberOfPeople)] + " when we heard a loud commotion. I'm still not sure what it was all about..",
-    "I was at the food table getting some snacks.",
-    "I was getting some punch.",
-    "I was talking to the birthday girl.",
-    "I was talking to the sound crew.",
-    "I was complimenting the chef."
-    ]
+    createFourArrays()
     numberOfPeople = 14
-    Person = sprites.create(img`
-        . . . . . e e e e e . . . . . . 
-        . . . . . 2 2 2 2 2 . . . . . . 
-        . . . . e e e e e e e . . . . . 
-        . . . . e 4 f 4 f 4 e . . . . . 
-        . . . . . 4 4 f 4 4 . . . . . . 
-        . . . . . 4 2 2 2 4 . . . . . . 
-        . . . . . e e e e e . . . . . . 
-        . . . . f f f f f f f . . . . . 
-        . . . f f 1 1 f 1 1 f f . . . . 
-        . e e f 1 1 1 1 1 1 1 f e e . . 
-        . e e f 1 1 1 f 1 1 1 f e e . . 
-        . . . f f 1 1 1 1 1 f f . . . . 
-        . . . . f f f f f f f . . . . . 
-        . . . . f 1 f . f 1 f . . . . . 
-        . . . . f 1 f . f 1 f . . . . . 
-        . . . . f f f . f f f . . . . . 
-        `, SpriteKind.Suspect)
-    tiles.placeOnRandomTile(Person, sprites.dungeon.darkGroundCenter)
-    Person = sprites.create(img`
-        . . . . . f f f f f . . . . . . 
-        . . . . . 8 8 8 7 8 . . . . . . 
-        . . . . f f f f f f f . . . . . 
-        . . . . f 4 f 4 f 4 f . . . . . 
-        . . . . . 4 4 4 4 4 . . . . . . 
-        . . . . . 4 2 4 2 4 . . . . . . 
-        . . . . . 4 4 2 4 4 . . . . . . 
-        . . . . . f f f f f . . . . . . 
-        . . . . f f f 1 f f f . . . . . 
-        . . e e f f f f f f f e e . . . 
-        . . e e f f f 1 f f f e e . . . 
-        . . . . f f f f f f f . . . . . 
-        . . . . f f f f f f f . . . . . 
-        . . . . f 1 f . f 1 f . . . . . 
-        . . . . f 1 f . f 1 f . . . . . 
-        . . . . f f f . f f f . . . . . 
-        `, SpriteKind.Suspect)
-    tiles.placeOnRandomTile(Person, sprites.dungeon.darkGroundCenter)
-    Person = sprites.create(img`
-        . . . . . f f f f f . . . . . . 
-        . . . . . b b b a b . . . . . . 
-        . . . . f f f f f f f . . . . . 
-        . . . . f 4 f 4 f 4 f . . . . . 
-        . . . . . 4 4 f 4 4 . . . . . . 
-        . . . . . 4 2 4 2 4 . . . . . . 
-        . . . . . 4 2 2 2 4 . . . . . . 
-        . . . . . 7 7 1 7 7 . . . . . . 
-        . . . . 7 7 7 7 7 7 7 . . . . . 
-        . . e e 7 7 7 1 7 7 7 e e . . . 
-        . . e e 7 7 7 7 7 7 7 e e . . . 
-        . . . . 7 7 7 1 7 7 7 . . . . . 
-        . . . . 7 7 7 7 7 7 7 . . . . . 
-        . . . . f 1 f . f 1 f . . . . . 
-        . . . . f 1 f . f 1 f . . . . . 
-        . . . . f f f . f f f . . . . . 
-        `, SpriteKind.Suspect)
-    tiles.placeOnRandomTile(Person, sprites.dungeon.darkGroundCenter)
-    Person = sprites.create(img`
-        . . . . . f f f f f . . . . . . 
-        . . . . . b b b a b . . . . . . 
-        . . . . f f f f f f f . . . . . 
-        . . . . f e f e f e f . . . . . 
-        . . . . . e e f e e . . . . . . 
-        . . . . . e e e e e . . . . . . 
-        . . . . . e 2 2 2 e . . . . . . 
-        . . . . . f f 1 f f . . . . . . 
-        . . . . f f f f f f f . . . . . 
-        . . e e f f f 1 f f f e e . . . 
-        . . e e f f f f f f f e e . . . 
-        . . . . f f f 1 f f f . . . . . 
-        . . . . f f f f f f f . . . . . 
-        . . . . f 1 f . f 1 f . . . . . 
-        . . . . f 1 f . f 1 f . . . . . 
-        . . . . f f f . f f f . . . . . 
-        `, SpriteKind.Suspect)
-    tiles.placeOnRandomTile(Person, sprites.dungeon.darkGroundCenter)
-    Person = sprites.create(img`
-        . . . . . f f f f f . . . . . . 
-        . . . . . b b b a b . . . . . . 
-        . . . . f f f f f f f . . . . . 
-        . . . . f e f e f e f . . . . . 
-        . . . . . e e f e e . . . . . . 
-        . . . . . e e e e e . . . . . . 
-        . . . . . e 2 2 2 e . . . . . . 
-        . . . . . f f f f f . . . . . . 
-        . . . . f 1 1 f 1 1 f . . . . . 
-        . . e e f 1 1 1 1 1 f e e . . . 
-        . . e e f 1 1 f 1 1 f e e . . . 
-        . . . . f 1 1 1 1 1 f . . . . . 
-        . . . . f f f f f f f . . . . . 
-        . . . . f 1 f . f 1 f . . . . . 
-        . . . . f 1 f . f 1 f . . . . . 
-        . . . . f f f . f f f . . . . . 
-        `, SpriteKind.Suspect)
-    tiles.placeOnRandomTile(Person, sprites.dungeon.darkGroundCenter)
-    Person = sprites.create(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . f f . f f . . . . . . 
-        . . . . f f f f f f f . . . . . 
-        . . . f f e 9 e 9 e f f . . . . 
-        . . . f f e e e e e f f . . . . 
-        . . f f f e 2 2 2 e f f f . . . 
-        . . f f f f f f f f f f f . . . 
-        . . . . f 1 1 f 1 1 f . . . . . 
-        . . e e f 1 1 1 1 1 f e e . . . 
-        . . e e f 1 1 f 1 1 f e e . . . 
-        . . . . f 1 1 1 1 1 f . . . . . 
-        . . . . f f f f f f f . . . . . 
-        . . . . f 1 f . f 1 f . . . . . 
-        . . . . f 1 f . f 1 f . . . . . 
-        . . . . f f f . f f f . . . . . 
-        `, SpriteKind.Suspect)
-    tiles.placeOnRandomTile(Person, sprites.dungeon.darkGroundCenter)
-    Person = sprites.create(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . 2 2 . 2 2 . . . . . . 
-        . . . . 2 2 2 2 2 2 2 . . . . . 
-        . . . 2 2 e 9 e 9 e 2 2 . . . . 
-        . . . 2 2 e e e e e 2 2 . . . . 
-        . . 2 2 2 e 2 2 2 e 2 2 2 . . . 
-        . . 2 2 2 f f f f f 2 2 2 . . . 
-        . . . . f 1 1 f 1 1 f . . . . . 
-        . . e e f 1 1 1 1 1 f e e . . . 
-        . . e e f 1 1 f 1 1 f e e . . . 
-        . . . . f 1 1 1 1 1 f . . . . . 
-        . . . . f f f f f f f . . . . . 
-        . . . . f 1 f . f 1 f . . . . . 
-        . . . . f 1 f . f 1 f . . . . . 
-        . . . . f f f . f f f . . . . . 
-        `, SpriteKind.Suspect)
-    tiles.placeOnRandomTile(Person, sprites.dungeon.darkGroundCenter)
-    Person = sprites.create(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . f f . f f . . . . . . 
-        . . . . f f f f f f f . . . . . 
-        . . . f f 4 9 4 9 4 f f . . . . 
-        . . . f f 4 4 4 4 4 f f . . . . 
-        . . f f f 4 2 2 2 4 f f f . . . 
-        . . f f f f f f f f f f f . . . 
-        . . . . f 1 1 f 1 1 f . . . . . 
-        . . 4 4 f 1 1 1 1 1 f 4 4 . . . 
-        . . 4 4 f 1 1 f 1 1 f 4 4 . . . 
-        . . . . f 1 1 1 1 1 f . . . . . 
-        . . . . f f f f f f f . . . . . 
-        . . . . f 1 f . f 1 f . . . . . 
-        . . . . f 1 f . f 1 f . . . . . 
-        . . . . f f f . f f f . . . . . 
-        `, SpriteKind.Suspect)
-    tiles.placeOnRandomTile(Person, sprites.dungeon.darkGroundCenter)
-    Person = sprites.create(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . f f . f f . . . . . . 
-        . . . . f f f f f f f . . . . . 
-        . . . f f e 9 e 9 e f f . . . . 
-        . . . f f e e e e e f f . . . . 
-        . . f f f e 2 2 2 e f f f . . . 
-        . . f f f f f f f f f f f . . . 
-        . . . . f 1 1 f 1 1 f . . . . . 
-        . . e e f 1 1 1 1 1 f e e . . . 
-        . . e e f 1 1 f 1 1 f e e . . . 
-        . . . . f 1 1 1 1 1 f . . . . . 
-        . . . . f f f f f f f . . . . . 
-        . . . . f 1 f . f 1 f . . . . . 
-        . . . . f 1 f . f 1 f . . . . . 
-        . . . . f f f . f f f . . . . . 
-        `, SpriteKind.Suspect)
-    tiles.placeOnRandomTile(Person, sprites.dungeon.darkGroundCenter)
+    for (let index2 = 0; index2 < 6; index2++) {
+        Person = sprites.create(img`
+            . . . . . e e e e e . . . . . . 
+            . . . . . 2 2 2 2 2 . . . . . . 
+            . . . . e e e e e e e . . . . . 
+            . . . . e 4 f 4 f 4 e . . . . . 
+            . . . . . 4 4 f 4 4 . . . . . . 
+            . . . . . 4 2 2 2 4 . . . . . . 
+            . . . . . e e e e e . . . . . . 
+            . . . . f f f f f f f . . . . . 
+            . . . f f 1 1 f 1 1 f f . . . . 
+            . e e f 1 1 1 1 1 1 1 f e e . . 
+            . e e f 1 1 1 f 1 1 1 f e e . . 
+            . . . f f 1 1 1 1 1 f f . . . . 
+            . . . . f f f f f f f . . . . . 
+            . . . . f 1 f . f 1 f . . . . . 
+            . . . . f 1 f . f 1 f . . . . . 
+            . . . . f f f . f f f . . . . . 
+            `, SpriteKind.Suspect)
+        tiles.placeOnRandomTile(Person, sprites.dungeon.darkGroundCenter)
+    }
+    for (let index2 = 0; index2 < 6; index2++) {
+        Person = sprites.create(img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . f f . f f . . . . . . 
+            . . . . f f f f f f f . . . . . 
+            . . . f f e 9 e 9 e f f . . . . 
+            . . . f f e e e e e f f . . . . 
+            . . f f f e 2 2 2 e f f f . . . 
+            . . f f f f f f f f f f f . . . 
+            . . . . f 1 1 f 1 1 f . . . . . 
+            . . e e f 1 1 1 1 1 f e e . . . 
+            . . e e f 1 1 f 1 1 f e e . . . 
+            . . . . f 1 1 1 1 1 f . . . . . 
+            . . . . f f f f f f f . . . . . 
+            . . . . f 1 f . f 1 f . . . . . 
+            . . . . f 1 f . f 1 f . . . . . 
+            . . . . f f f . f f f . . . . . 
+            `, SpriteKind.Suspect)
+        tiles.placeOnRandomTile(Person, sprites.dungeon.darkGroundCenter)
+    }
     Jane = sprites.create(img`
         . . . . . . . . . . . . . . . . 
         . . . . . 3 3 . 3 3 . . . . . . 
@@ -329,7 +206,7 @@ function whoDidIt () {
         . 6 a 6 a 6 a 6 a 6 a 6 a 6 . . 
         . . . . 4 4 . . . 4 4 . . . . . 
         `, SpriteKind.birthdayGirl)
-    tiles.placeOnRandomTile(Jane, sprites.dungeon.darkGroundCenter)
+    tiles.placeOnTile(Jane, tiles.getTileLocation(8, 10))
     Fanny = sprites.create(img`
         . . . . . . . . . . . . . . . . 
         . . . . . f f . f f . . . . . . 
@@ -348,15 +225,29 @@ function whoDidIt () {
         . 7 7 c 7 c 7 c 7 c 7 c 7 c . . 
         . . . . 4 4 . . . 4 4 . . . . . 
         `, SpriteKind.guilty)
-    tiles.placeOnRandomTile(Fanny, sprites.dungeon.darkGroundCenter)
+    tiles.placeOnTile(Fanny, tiles.getTileLocation(6, 8))
 }
 controller.menu.onEvent(ControllerButtonEvent.Pressed, function () {
     if (game3 == true) {
         guess = game.askForString("Who is the suspect?")
+        isItRight(guess)
     }
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.guilty, function (sprite, otherSprite) {
-	
+    decision = game.askForString("Would you like to ask for her name?", 3)
+    if (decision == "yes") {
+        otherSprite.sayText("Uh... Fanny")
+        pause(1000)
+    }
+    decision = game.askForString("Would you like to ask for an alibi?", 3)
+    if (decision == "yes") {
+        otherSprite.sayText("Uh... I don't remember... definitly...")
+        pause(1500)
+        otherSprite.sayText("...Yeah...")
+        pause(1000)
+    }
+    game.showLongText("Fanny quickly goes away, clearly uncomfortable", DialogLayout.Bottom)
+    sprites.destroy(otherSprite)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Suspect, function (sprite, otherSprite) {
     times = 0
@@ -367,7 +258,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Suspect, function (sprite, other
             otherSprite.sayText("My name is " + SuspectList[index])
             SuspectList.removeAt(0)
             numberOfPeople += -1
-            pause(2000)
+            pause(1000)
         }
         decision = game.askForString("yes or no, would you like to ask what their job is?", 3)
         if (decision == "yes") {
@@ -382,7 +273,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Suspect, function (sprite, other
         decision = game.askForString("yes or no, would you like to ask for an alibi?", 3)
         if (decision == "yes") {
             otherSprite.sayText(alibi[randint(0, 5)])
-            pause(5500)
+            pause(2000)
             otherSprite.sayText(":)")
             pause(2000)
         }
@@ -398,15 +289,15 @@ let guess = ""
 let Fanny: Sprite = null
 let Jane: Sprite = null
 let Person: Sprite = null
-let numberOfPeople = 0
-let alibi: string[] = []
-let relation: string[] = []
-let job: string[] = []
-let SuspectList: string[] = []
 let Investigator: Sprite = null
 let game3 = false
 let wordList: string[] = []
 let decision = ""
+let numberOfPeople = 0
+let alibi: string[] = []
+let job: string[] = []
+let SuspectList: string[] = []
+let relation: string[] = []
 let chances = 0
 let optionTwo = ""
 let optionOne = ""

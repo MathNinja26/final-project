@@ -86,6 +86,16 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.birthdayGirl, function (sprite, 
     game.showLongText("Cadence runs out of the room, clearly still upset about how her party turned out.", DialogLayout.Full)
     sprites.destroy(otherSprite)
 })
+function thisORThat () {
+    scene.setBackgroundColor(3)
+    Cats = game.askForString("Do you prefer Cats or Dogs?")
+    if (Cats == "Cats") {
+        game.splash("41% of people prefer cats.")
+        pause(500)
+    } else {
+        game.splash("41% of people prefer cats.")
+    }
+}
 function wordUnscramble () {
     wordList = [
     "house",
@@ -293,6 +303,7 @@ let Person: Sprite = null
 let Investigator: Sprite = null
 let game3 = false
 let wordList: string[] = []
+let Cats = ""
 let decision = ""
 let numberOfPeople = 0
 let alibi: string[] = []
@@ -322,7 +333,7 @@ while (game2 == 0) {
         }
     }
     if (game2 == 1) {
-    	
+        thisORThat()
     }
     if (game2 == 2) {
         wordUnscramble()

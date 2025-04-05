@@ -71,17 +71,30 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.birthdayGirl, function (sprite, 
     otherSprite.sayText("*sob sob*")
     pause(500)
     game.showLongText("You recognise this girl as being the birthday girl, Cadence.", DialogLayout.Full)
-    decision = game.askForString("Would you like to ask her what is wrong", 3)
-    if (decision == "yes") {
-        otherSprite.sayText("Some other lady wore a dress to my party and now my cake is gone.")
-        pause(2500)
-    }
-    decision = game.askForString("Would you like to ask her about the cake?", 3)
-    if (decision == "yes") {
-        otherSprite.sayText("Well I was talking to my mom, and I was keeping an eye on the other lady wearing a dress")
-        pause(3500)
-        otherSprite.sayText("And I lost track of her for a minute and then I realized that the cake was gone")
-        pause(4000)
+    points = 0
+    while (points == 0) {
+        points = 1
+        decision = game.askForString("Would you like to ask her what is wrong", 3)
+        if (decision == "yes") {
+            otherSprite.sayText("Some other lady wore a dress to my party and now my cake is gone.")
+            pause(2500)
+        } else if (decision == "no") {
+            decision = game.askForString("Would you like to ask her about the cake?", 3)
+            if (decision == "yes") {
+                otherSprite.sayText("Well I was talking to my mom, and I was keeping an eye on the other lady wearing a dress")
+                pause(3500)
+                otherSprite.sayText("And I lost track of her for a minute and then I realized that the cake was gone")
+                pause(4000)
+            } else if (decision == "no") {
+                pause(5)
+            } else {
+                game.splash("That is not a valid answer.")
+                points = 0
+            }
+        } else {
+            game.splash("That is not a valid answer.")
+            points = 0
+        }
     }
     game.showLongText("Cadence runs out of the room, clearly still upset about how her party turned out.", DialogLayout.Full)
     sprites.destroy(otherSprite)
@@ -348,6 +361,7 @@ let travel = ""
 let red = ""
 let Cats = ""
 let decision = ""
+let points = 0
 let numberOfPeople = 0
 let alibi: string[] = []
 let job: string[] = []

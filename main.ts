@@ -93,7 +93,8 @@ function thisORThat () {
         game.splash("41% of people prefer cats.")
         pause(500)
     } else {
-        game.splash("41% of people prefer cats.")
+        game.splash("59% of people prefer dogs")
+        pause(500)
     }
 }
 function wordUnscramble () {

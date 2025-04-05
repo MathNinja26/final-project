@@ -81,7 +81,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.birthdayGirl, function (sprite, 
         otherSprite.sayText("Well I was talking to my mom, and I was keeping an eye on the other lady wearing a dress")
         pause(3500)
         otherSprite.sayText("And I lost track of her for a minute and then I realized that the cake was gone")
-        pause(3500)
+        pause(4000)
     }
     game.showLongText("Cadence runs out of the room, clearly still upset about how her party turned out.", DialogLayout.Full)
     sprites.destroy(otherSprite)
@@ -188,6 +188,25 @@ function whoDidIt () {
             `, SpriteKind.Suspect)
         tiles.placeOnRandomTile(Person, sprites.dungeon.darkGroundCenter)
     }
+    Fanny = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . f f . f f . . . . . . 
+        . . . . f f f f f f f . . . . . 
+        . . . f f 4 9 4 9 4 f f . . . . 
+        . . . f f 4 4 4 4 4 f f . . . . 
+        . . f f f 4 2 2 2 4 f f f . . . 
+        . . f f f c 7 c 7 c f f f . . . 
+        . . . . . 7 c 7 c 7 . . . . . . 
+        . 4 4 4 7 c 7 c 7 c 7 4 4 4 . . 
+        . 4 4 4 c 7 c 7 c 7 c 4 4 4 . . 
+        . . . c 7 c 7 c 7 c 7 c . . . . 
+        . . . 7 c 7 c 7 c 7 c 7 . . . . 
+        . . 7 c 7 c 7 c 7 c 7 c 7 . . . 
+        . . c 7 c 7 c 7 c 7 c 7 c . . . 
+        . 7 7 c 7 c 7 c 7 c 7 c 7 c . . 
+        . . . . 4 4 . . . 4 4 . . . . . 
+        `, SpriteKind.guilty)
+    tiles.placeOnTile(Fanny, tiles.getTileLocation(8, 8))
     Jane = sprites.create(img`
         . . . . . . . . . . . . . . . . 
         . . . . . 3 3 . 3 3 . . . . . . 
@@ -207,25 +226,6 @@ function whoDidIt () {
         . . . . 4 4 . . . 4 4 . . . . . 
         `, SpriteKind.birthdayGirl)
     tiles.placeOnTile(Jane, tiles.getTileLocation(8, 10))
-    Fanny = sprites.create(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . f f . f f . . . . . . 
-        . . . . f f f f f f f . . . . . 
-        . . . f f 4 9 4 9 4 f f . . . . 
-        . . . f f 4 4 4 4 4 f f . . . . 
-        . . f f f 4 2 2 2 4 f f f . . . 
-        . . f f f c 7 c 7 c f f f . . . 
-        . . . . . 7 c 7 c 7 . . . . . . 
-        . 4 4 4 7 c 7 c 7 c 7 4 4 4 . . 
-        . 4 4 4 c 7 c 7 c 7 c 4 4 4 . . 
-        . . . c 7 c 7 c 7 c 7 c . . . . 
-        . . . 7 c 7 c 7 c 7 c 7 . . . . 
-        . . 7 c 7 c 7 c 7 c 7 c 7 . . . 
-        . . c 7 c 7 c 7 c 7 c 7 c . . . 
-        . 7 7 c 7 c 7 c 7 c 7 c 7 c . . 
-        . . . . 4 4 . . . 4 4 . . . . . 
-        `, SpriteKind.guilty)
-    tiles.placeOnTile(Fanny, tiles.getTileLocation(6, 8))
 }
 controller.menu.onEvent(ControllerButtonEvent.Pressed, function () {
     if (game3 == true) {
@@ -281,13 +281,14 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Suspect, function (sprite, other
         times = 1
         number += 1
     }
+    sprites.destroy(otherSprite)
 })
 let number = 0
 let index = 0
 let times = 0
 let guess = ""
-let Fanny: Sprite = null
 let Jane: Sprite = null
+let Fanny: Sprite = null
 let Person: Sprite = null
 let Investigator: Sprite = null
 let game3 = false

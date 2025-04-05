@@ -281,6 +281,7 @@ controller.menu.onEvent(ControllerButtonEvent.Pressed, function () {
         } else {
             chances += -1
             if (chances == 0) {
+                game.splash("Game over, try again some other time!")
                 game.gameOver(false)
             } else {
                 game.splash("Try again")

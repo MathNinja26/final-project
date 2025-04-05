@@ -62,6 +62,7 @@ function whoDidIt () {
         `)
     game.showLongText("You are an investagator. You have been hired to figure out who stole the cake. ", DialogLayout.Full)
     game.showLongText("Talk to suspects and when you think you have figured out who stole the cake hit the menu button to make your quess! ", DialogLayout.Full)
+    game.showLongText("When you guess put the person's name that you think did it.", DialogLayout.Full)
     game.showLongText("WARNING: YOU CAN ONLY TALK TO EACH PERSON ONCE.", DialogLayout.Full)
     Investigator = sprites.create(img`
         . . . . . . . . . . . . . 

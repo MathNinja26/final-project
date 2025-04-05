@@ -3,6 +3,21 @@ namespace SpriteKind {
     export const birthdayGirl = SpriteKind.create()
     export const guilty = SpriteKind.create()
 }
+function isItRight (text: string) {
+    optionOne = "Fanny"
+    optionTwo = "fanny"
+    if (text == (optionOne || optionTwo)) {
+        game.gameOver(true)
+    } else {
+        chances += -1
+        if (chances == 0) {
+            game.gameOver(false)
+        } else {
+            game.splash("Try again")
+            game.splash("You have " + chances + " chances left.")
+        }
+    }
+}
 sprites.onOverlap(SpriteKind.Player, SpriteKind.birthdayGirl, function (sprite, otherSprite) {
     sprite.sayText("Hi.")
     pause(1000)
@@ -322,17 +337,6 @@ function whoDidIt () {
 controller.menu.onEvent(ControllerButtonEvent.Pressed, function () {
     if (game3 == true) {
         guess = game.askForString("Who is the suspect?")
-        if (guess == "Fanny") {
-            game.gameOver(true)
-        } else {
-            chances += -1
-            if (chances == 0) {
-                game.gameOver(false)
-            } else {
-                game.splash("Try again")
-                game.splash("You have " + chances + " chances left.")
-            }
-        }
     }
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Suspect, function (sprite, otherSprite) {
@@ -382,9 +386,11 @@ let relation: string[] = []
 let job: string[] = []
 let SuspectList: string[] = []
 let Investigator: Sprite = null
-let chances = 0
 let game3 = false
 let wordList: string[] = []
+let chances = 0
+let optionTwo = ""
+let optionOne = ""
 let choice = ""
 let game2 = 0
 while (game2 == 0) {

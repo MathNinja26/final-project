@@ -110,7 +110,7 @@ function thisORThat () {
         game.splash("That is not a valid answer.")
         game.splash("Moving to next question.")
     }
-    travel = game.askForString("Would you prefer to go to Japan or London", 4)
+    travel = game.askForString("Would you prefer to go to Japan or London", 6)
     if (travel == "London") {
         game.splash("40% of people would prefer to go to London.")
         pause(500)
@@ -120,6 +120,19 @@ function thisORThat () {
     } else {
         game.splash("That is not a valid answer.")
         game.splash("Moving to next question")
+    }
+    books = game.askForString("Do you prefer Books or Movies", 6)
+    if (books == "Books") {
+        game.splash("67% of people prefer books.")
+        pause(500)
+        game.splash("GAME OVER")
+    } else if (books == "Movies") {
+        game.splash("33% of people prefer movies.")
+        pause(500)
+        game.splash("GAME OVER")
+    } else {
+        game.splash("That is not a valid answer.")
+        game.splash("GAME OVER")
     }
 }
 function wordUnscramble () {
@@ -330,6 +343,7 @@ let Person: Sprite = null
 let Investigator: Sprite = null
 let game3 = false
 let wordList: string[] = []
+let books = ""
 let travel = ""
 let red = ""
 let Cats = ""
@@ -348,18 +362,24 @@ while (game2 == 0) {
     choice = game.askForString("Do you want to play \"This or that? Yes or no?", 3)
     if (choice == "yes") {
         game2 = 1
-    } else {
+    } else if (choice == "no") {
         choice = game.askForString("Do you want to play \"Unscramble?\" Yes or no?", 3)
         if (choice == "yes") {
             game2 = 2
-        } else {
+        } else if (choice == "no") {
             choice = game.askForString("Do you want to play \"Who did it? Yes or no?", 3)
             if (choice == "yes") {
                 game2 = 3
-            } else {
+            } else if (choice == "no") {
                 game.splash("You MUST pick a game.")
+            } else {
+                game.splash("That is not a valid answer.")
             }
+        } else {
+            game.splash("That is not a valid answer.")
         }
+    } else {
+        game.splash("That is not a valid answer.")
     }
     if (game2 == 1) {
         thisORThat()

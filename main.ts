@@ -93,24 +93,34 @@ function thisORThat () {
         game.splash("41% of people prefer cats.")
         pause(500)
     } else if (Cats == "Dogs") {
-        game.splash("59% of people prefer dogs")
+        game.splash("59% of people prefer dogs.")
         pause(500)
     } else {
         game.splash("That is not a valid answer.")
-        game.splash("Moving to next question")
+        game.splash("Moving to next question.")
     }
     red = game.askForString("Do you like Red or Blue better", 4)
     if (red == "Red") {
-        game.splash("22% of people like red better ")
+        game.splash("22% of people like red better. ")
         pause(500)
     } else if (red == "Blue") {
-        game.splash("78% like blue better")
+        game.splash("78% like blue better.")
+        pause(500)
+    } else {
+        game.splash("That is not a valid answer.")
+        game.splash("Moving to next question.")
+    }
+    travel = game.askForString("Would you prefer to go to Japan or London", 4)
+    if (travel == "London") {
+        game.splash("40% of people would prefer to go to London.")
+        pause(500)
+    } else if (travel == "Japan") {
+        game.splash("60% of people would prefer to go to Japan.")
         pause(500)
     } else {
         game.splash("That is not a valid answer.")
         game.splash("Moving to next question")
     }
-    travel = game.askForString("Would you prefer to go to Japan or London", 4)
 }
 function wordUnscramble () {
     wordList = [

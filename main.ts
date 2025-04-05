@@ -37,6 +37,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.birthdayGirl, function (sprite, 
         pause(5500)
     }
     game.showLongText("Cadence runs out of the room, clearly still upset about how her party turned out.", DialogLayout.Full)
+    sprites.destroy(otherSprite)
 })
 function wordUnscramble () {
     wordList = [
@@ -353,6 +354,9 @@ controller.menu.onEvent(ControllerButtonEvent.Pressed, function () {
     if (game3 == true) {
         guess = game.askForString("Who is the suspect?")
     }
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.guilty, function (sprite, otherSprite) {
+	
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Suspect, function (sprite, otherSprite) {
     times = 0

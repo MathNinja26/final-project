@@ -331,6 +331,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.guilty, function (sprite, otherS
                     game.splash("That is not a valid answer.")
                 }
             }
+            points = 1
         } else if (decision == "no") {
             while (points == 1) {
                 points = 0
@@ -347,6 +348,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.guilty, function (sprite, otherS
                     game.splash("That is not a valid answer.")
                 }
             }
+            points = 1
         } else {
             points = 0
             game.splash("That is not a valid answer.")

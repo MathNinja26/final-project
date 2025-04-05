@@ -112,6 +112,7 @@ function wordUnscramble () {
     game.splash(wordList._pickRandom())
 }
 function whoDidIt () {
+    music.play(music.stringPlayable("D E D E C C C C ", 200), music.PlaybackMode.LoopingInBackground)
     game3 = true
     tiles.setCurrentTilemap(tilemap`level1`)
     chances = 3

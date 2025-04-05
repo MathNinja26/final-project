@@ -369,24 +369,6 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Suspect, function (sprite, other
             pause(1000)
             while (points == 0) {
                 decision = game.askForString("yes or no, would you like to ask what their job is?", 3)
-                if (decision == "yes") {
-                    otherSprite.sayText("I work as a " + job[randint(0, 5)])
-                    pause(2000)
-                }
-                decision = game.askForString("Would you like to ask why they went to the party", 3)
-                if (decision == "yes") {
-                    otherSprite.sayText(relation[randint(0, 3)])
-                    pause(2000)
-                }
-                decision = game.askForString("yes or no, would you like to ask for an alibi?", 3)
-                if (decision == "yes") {
-                    otherSprite.sayText(alibi[randint(0, 5)])
-                    pause(2000)
-                    otherSprite.sayText(":)")
-                    pause(2000)
-                }
-                sprites.destroy(otherSprite)
-                points = 1
             }
         } else if (decision == "no") {
             while (points == 0) {
@@ -394,24 +376,69 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Suspect, function (sprite, other
                 if (decision == "yes") {
                     otherSprite.sayText("I work as a " + job[randint(0, 5)])
                     pause(2000)
+                    while (points == 0) {
+                        decision = game.askForString("Would you like to ask why they went to the party", 3)
+                        if (decision == "yes") {
+                            otherSprite.sayText(relation[randint(0, 3)])
+                            pause(2000)
+                            while (points == 0) {
+                                decision = game.askForString("yes or no, would you like to ask for an alibi?", 3)
+                                if (decision == "yes") {
+                                    otherSprite.sayText(alibi[randint(0, 5)])
+                                    pause(2000)
+                                    otherSprite.sayText(":)")
+                                    pause(2000)
+                                }
+                                sprites.destroy(otherSprite)
+                                points = 1
+                            }
+                        } else if (decision == "no") {
+                            while (points == 0) {
+                                decision = game.askForString("yes or no, would you like to ask for an alibi?", 3)
+                                if (decision == "yes") {
+                                    otherSprite.sayText(alibi[randint(0, 5)])
+                                    pause(2000)
+                                    otherSprite.sayText(":)")
+                                    pause(2000)
+                                }
+                                sprites.destroy(otherSprite)
+                                points = 1
+                            }
+                        }
+                    }
+                } else if (decision == "no") {
+                    while (points == 0) {
+                        decision = game.askForString("Would you like to ask why they went to the party", 3)
+                        if (decision == "yes") {
+                            otherSprite.sayText(relation[randint(0, 3)])
+                            pause(2000)
+                            while (points == 0) {
+                                decision = game.askForString("yes or no, would you like to ask for an alibi?", 3)
+                                if (decision == "yes") {
+                                    otherSprite.sayText(alibi[randint(0, 5)])
+                                    pause(2000)
+                                    otherSprite.sayText(":)")
+                                    pause(2000)
+                                }
+                                sprites.destroy(otherSprite)
+                                points = 1
+                            }
+                        } else if (decision == "no") {
+                            while (points == 0) {
+                                decision = game.askForString("yes or no, would you like to ask for an alibi?", 3)
+                                if (decision == "yes") {
+                                    otherSprite.sayText(alibi[randint(0, 5)])
+                                    pause(2000)
+                                    otherSprite.sayText(":)")
+                                    pause(2000)
+                                }
+                                sprites.destroy(otherSprite)
+                                points = 1
+                            }
+                        }
+                    }
                 }
-                decision = game.askForString("Would you like to ask why they went to the party", 3)
-                if (decision == "yes") {
-                    otherSprite.sayText(relation[randint(0, 3)])
-                    pause(2000)
-                }
-                decision = game.askForString("yes or no, would you like to ask for an alibi?", 3)
-                if (decision == "yes") {
-                    otherSprite.sayText(alibi[randint(0, 5)])
-                    pause(2000)
-                    otherSprite.sayText(":)")
-                    pause(2000)
-                }
-                sprites.destroy(otherSprite)
-                points = 1
             }
-        } else {
-        	
         }
     }
     sprites.destroy(otherSprite)

@@ -2,6 +2,12 @@ namespace SpriteKind {
     export const Suspect = SpriteKind.create()
     export const birthdayGirl = SpriteKind.create()
 }
+sprites.onOverlap(SpriteKind.Player, SpriteKind.birthdayGirl, function (sprite, otherSprite) {
+    sprite.sayText("Hi.")
+    pause(1000)
+    otherSprite.sayText("*sob sob*")
+    pause(500)
+})
 function wordUnscramble () {
     wordList = [
     "house",

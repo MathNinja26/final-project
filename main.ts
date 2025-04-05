@@ -76,7 +76,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.birthdayGirl, function (sprite, 
         otherSprite.sayText("Some other lady wore a dress to my party and now my cake is gone.")
         pause(2500)
     }
-    decision = game.askForString("Would you like to ask her when the cake dissapeared", 3)
+    decision = game.askForString("Would you like to ask her about the cake?", 3)
     if (decision == "yes") {
         otherSprite.sayText("Well I was talking to my mom, and I was keeping an eye on the other lady wearing a dress")
         pause(3500)

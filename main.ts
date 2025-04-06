@@ -73,35 +73,42 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.birthdayGirl, function (sprite, 
     game.showLongText("You recognise this girl as being the birthday girl, Cadence.", DialogLayout.Full)
     points = 0
     while (points == 0) {
-        points = 1
         decision = game.askForString("Would you like to ask her what is wrong", 3)
         if (decision == "yes") {
             otherSprite.sayText("Some other lady wore a dress to my party and now my cake is gone.")
             pause(2500)
-            decision = game.askForString("Would you like to ask her about the cake?", 3)
-            if (decision == "yes") {
-                otherSprite.sayText("Well I was talking to my mom, and I was keeping an eye on the other lady wearing a dress")
-                pause(3500)
-                otherSprite.sayText("And I lost track of her for a minute and then I realized that the cake was gone")
-                pause(4000)
-            } else if (decision == "no") {
-                pause(5)
-            } else {
-                game.splash("That is not a valid answer.")
-                points = 0
+            while (points == 0) {
+                decision = game.askForString("Would you like to ask her about the cake?", 3)
+                if (decision == "yes") {
+                    otherSprite.sayText("Well I was talking to my mom, and I was keeping an eye on the other lady wearing a dress")
+                    pause(3500)
+                    otherSprite.sayText("And I lost track of her for a minute and then I realized that the cake was gone")
+                    pause(4000)
+                    points = 1
+                } else if (decision == "no") {
+                    pause(5)
+                    points = 1
+                } else {
+                    game.splash("That is not a valid answer.")
+                    points = 0
+                }
             }
         } else if (decision == "no") {
-            decision = game.askForString("Would you like to ask her about the cake?", 3)
-            if (decision == "yes") {
-                otherSprite.sayText("Well I was talking to my mom, and I was keeping an eye on the other lady wearing a dress")
-                pause(3500)
-                otherSprite.sayText("And I lost track of her for a minute and then I realized that the cake was gone")
-                pause(4000)
-            } else if (decision == "no") {
-                pause(5)
-            } else {
-                game.splash("That is not a valid answer.")
-                points = 0
+            while (points == 0) {
+                decision = game.askForString("Would you like to ask her about the cake?", 3)
+                if (decision == "yes") {
+                    otherSprite.sayText("Well I was talking to my mom, and I was keeping an eye on the other lady wearing a dress")
+                    pause(3500)
+                    otherSprite.sayText("And I lost track of her for a minute and then I realized that the cake was gone")
+                    pause(4000)
+                    points = 1
+                } else if (decision == "no") {
+                    pause(5)
+                    points = 1
+                } else {
+                    game.splash("That is not a valid answer.")
+                    points = 0
+                }
             }
         } else {
             game.splash("That is not a valid answer.")

@@ -12,18 +12,20 @@ function instructions () {
 function isItRight (text: string) {
     optionOne = "Fanny"
     optionTwo = "fanny"
-    while (text == (optionOne || optionTwo)) {
+    if (text == (optionOne || optionTwo)) {
         music.play(music.melodyPlayable(music.baDing), music.PlaybackMode.InBackground)
         sprites.destroyAllSpritesOfKind(SpriteKind.Suspect)
         game.gameOver(true)
-    }
-    if (text != (optionOne || optionTwo)) {
-        chances += -1
-        if (chances == 0) {
-            game.gameOver(false)
-        } else {
-            game.splash("Try again")
-            game.splash("You have " + chances + " chances left.")
+    } else if (text != (optionOne || optionTwo)) {
+        options = chances
+        while (chances == options) {
+            chances += -1
+            if (chances == 0) {
+                game.gameOver(false)
+            } else {
+                game.splash("Try again")
+                game.splash("You have " + chances + " chances left.")
+            }
         }
     }
 }
@@ -540,6 +542,7 @@ let job: string[] = []
 let SuspectList: string[] = []
 let relation: string[] = []
 let chances = 0
+let options = 0
 let optionTwo = ""
 let optionOne = ""
 let choice = ""

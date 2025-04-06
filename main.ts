@@ -12,9 +12,10 @@ function instructions () {
 function isItRight (text: string) {
     optionOne = "Fanny"
     optionTwo = "fanny"
-    if (text == (optionOne || optionTwo)) {
+    while (text == (optionOne || optionTwo)) {
         game.gameOver(true)
-    } else {
+    }
+    if (text != (optionOne || optionTwo)) {
         chances += -1
         if (chances == 0) {
             game.gameOver(false)
@@ -542,28 +543,23 @@ let optionOne = ""
 let choice = ""
 let game2 = 0
 while (game2 == 0) {
+    game2 = 0
     choice = game.askForString("Do you want to play \"This or that? Yes or no?", 3)
     if (choice == "yes") {
         game2 = 1
     } else if (choice == "no") {
-        while (game2 == 0) {
-            choice = game.askForString("Do you want to play \"Unscramble?\" Yes or no?", 3)
+        choice = game.askForString("Do you want to play \"Unscramble?\" Yes or no?", 3)
+        if (choice == "yes") {
+            game2 = 2
+        } else if (choice == "no") {
+            choice = game.askForString("Do you want to play \"Who did it? Yes or no?", 3)
             if (choice == "yes") {
-                game2 = 2
-            } else if (choice == "no") {
-                while (game2 == 0) {
-                    choice = game.askForString("Do you want to play \"Who did it? Yes or no?", 3)
-                    if (choice == "yes") {
-                        game2 = 3
-                    } else if (choice == "no") {
-                        game.splash("You MUST pick a game.")
-                    } else {
-                        game.splash("That is not a valid answer.")
-                    }
-                }
+                game2 = 3
             } else {
-                game.splash("That is not a valid answer.")
+                game.splash("You MUST pick a game.")
             }
+        } else {
+            game.splash("That is not a valid answer.")
         }
     } else {
         game.splash("That is not a valid answer.")

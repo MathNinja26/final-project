@@ -13,6 +13,8 @@ function isItRight (text: string) {
     optionOne = "Fanny"
     optionTwo = "fanny"
     while (text == (optionOne || optionTwo)) {
+        music.play(music.melodyPlayable(music.baDing), music.PlaybackMode.InBackground)
+        sprites.destroyAllSpritesOfKind(SpriteKind.Suspect)
         game.gameOver(true)
     }
     if (text != (optionOne || optionTwo)) {

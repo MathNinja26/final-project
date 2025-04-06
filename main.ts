@@ -379,9 +379,14 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Suspect, function (sprite, other
                             pause(2000)
                             otherSprite.sayText(":)")
                             pause(2000)
+                            sprites.destroy(otherSprite)
+                            points = 1
+                        } else if (decision == "no") {
+                            sprites.destroy(otherSprite)
+                            points = 1
+                        } else {
+                            game.splash("That's not a valid answer.")
                         }
-                        sprites.destroy(otherSprite)
-                        points = 1
                     }
                 } else if (decision == "no") {
                     while (points == 0) {
@@ -391,10 +396,17 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Suspect, function (sprite, other
                             pause(2000)
                             otherSprite.sayText(":)")
                             pause(2000)
+                            sprites.destroy(otherSprite)
+                            points = 1
+                        } else if (decision == "no") {
+                            sprites.destroy(otherSprite)
+                            points = 1
+                        } else {
+                            game.splash("That's not a valid answer.")
                         }
-                        sprites.destroy(otherSprite)
-                        points = 1
                     }
+                } else {
+                    game.splash("That's not a valid answer.")
                 }
             }
         } else if (decision == "no") {
@@ -415,9 +427,14 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Suspect, function (sprite, other
                                     pause(2000)
                                     otherSprite.sayText(":)")
                                     pause(2000)
+                                    sprites.destroy(otherSprite)
+                                    points = 1
+                                } else if (decision == "no") {
+                                    sprites.destroy(otherSprite)
+                                    points = 1
+                                } else {
+                                    game.splash("That's not a valid answer.")
                                 }
-                                sprites.destroy(otherSprite)
-                                points = 1
                             }
                         } else if (decision == "no") {
                             while (points == 0) {
@@ -427,10 +444,17 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Suspect, function (sprite, other
                                     pause(2000)
                                     otherSprite.sayText(":)")
                                     pause(2000)
+                                    sprites.destroy(otherSprite)
+                                    points = 1
+                                } else if (decision == "no") {
+                                    sprites.destroy(otherSprite)
+                                    points = 1
+                                } else {
+                                    game.splash("That's not a valid answer.")
                                 }
-                                sprites.destroy(otherSprite)
-                                points = 1
                             }
+                        } else {
+                            game.splash("That's not a valid answer.")
                         }
                     }
                 } else if (decision == "no") {
@@ -446,9 +470,14 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Suspect, function (sprite, other
                                     pause(2000)
                                     otherSprite.sayText(":)")
                                     pause(2000)
+                                    sprites.destroy(otherSprite)
+                                    points = 1
+                                } else if (decision == "no") {
+                                    sprites.destroy(otherSprite)
+                                    points = 1
+                                } else {
+                                    game.splash("That's not a valid answer.")
                                 }
-                                sprites.destroy(otherSprite)
-                                points = 1
                             }
                         } else if (decision == "no") {
                             while (points == 0) {
@@ -458,14 +487,25 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Suspect, function (sprite, other
                                     pause(2000)
                                     otherSprite.sayText(":)")
                                     pause(2000)
+                                    sprites.destroy(otherSprite)
+                                    points = 1
+                                } else if (decision == "no") {
+                                    sprites.destroy(otherSprite)
+                                    points = 1
+                                } else {
+                                    game.splash("That's not a valid answer.")
                                 }
-                                sprites.destroy(otherSprite)
-                                points = 1
                             }
+                        } else {
+                            game.splash("That's not a valid answer.")
                         }
                     }
+                } else {
+                    game.splash("That's not a valid answer.")
                 }
             }
+        } else {
+            game.splash("That's not a valid answer.")
         }
     }
     sprites.destroy(otherSprite)

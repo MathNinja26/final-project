@@ -539,20 +539,24 @@ while (game2 == 0) {
     if (choice == "yes") {
         game2 = 1
     } else if (choice == "no") {
-        choice = game.askForString("Do you want to play \"Unscramble?\" Yes or no?", 3)
-        if (choice == "yes") {
-            game2 = 2
-        } else if (choice == "no") {
-            choice = game.askForString("Do you want to play \"Who did it? Yes or no?", 3)
+        while (game2 == 0) {
+            choice = game.askForString("Do you want to play \"Unscramble?\" Yes or no?", 3)
             if (choice == "yes") {
-                game2 = 3
+                game2 = 2
             } else if (choice == "no") {
-                game.splash("You MUST pick a game.")
+                while (game2 == 0) {
+                    choice = game.askForString("Do you want to play \"Who did it? Yes or no?", 3)
+                    if (choice == "yes") {
+                        game2 = 3
+                    } else if (choice == "no") {
+                        game.splash("You MUST pick a game.")
+                    } else {
+                        game.splash("That is not a valid answer.")
+                    }
+                }
             } else {
                 game.splash("That is not a valid answer.")
             }
-        } else {
-            game.splash("That is not a valid answer.")
         }
     } else {
         game.splash("That is not a valid answer.")

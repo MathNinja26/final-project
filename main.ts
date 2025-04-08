@@ -173,19 +173,35 @@ function thisORThat () {
     }
 }
 function wordUnscramble () {
+    info.setScore(0)
+    game.showLongText("The purpose of this game is to unscramble the given word.", DialogLayout.Full)
+    game.showLongText("A word will be given with mixed up letters. ", DialogLayout.Full)
+    game.showLongText("Convert five scrambled words to the right word to win the game!", DialogLayout.Full)
     wordList = [
-    "house",
-    "plane",
-    "capital",
-    "hopeless",
-    "flippant",
-    "definitely",
-    "calendar",
-    "achieve",
+    "eohsu",
+    "lepna",
+    "iacplta",
+    "esphosle",
+    "pltinfap",
+    "iyledfiten",
+    "nrclaeda",
+    "ihecaev",
     "indubitably",
-    "pneumonoultramicroscopicsilicovolcanoconiosis"
+    "instrument"
     ]
-    game.splash(wordList._pickRandom())
+    for (let index2 = 0; index2 < 5; index2++) {
+        answer = game.askForString(wordList.shift())
+        if (answer == wordList.shift()) {
+            info.changeScoreBy(1)
+        } else {
+            info.changeScoreBy(-1)
+        }
+    }
+    if (info.score() == 5) {
+        game.setGameOverEffect(true, effects.confetti)
+    } else {
+        game.splash("Try Again!")
+    }
 }
 function whoDidIt () {
     music.play(music.stringPlayable("D E D E D E D C ", 200), music.PlaybackMode.LoopingInBackground)
@@ -529,6 +545,7 @@ let Fanny: Sprite = null
 let Person: Sprite = null
 let Investigator: Sprite = null
 let game3 = false
+let answer = ""
 let wordList: string[] = []
 let books = ""
 let travel = ""

@@ -186,8 +186,8 @@ function wordUnscramble () {
     "iyledfiten",
     "nrclaeda",
     "ihecaev",
-    "indubitably",
-    "instrument"
+    "inlubibydat",
+    "mtnuestirn"
     ]
     correctWords = [
     "house",

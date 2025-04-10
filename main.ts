@@ -176,7 +176,7 @@ function wordUnscramble () {
     info.setScore(0)
     game.showLongText("The purpose of this game is to unscramble the given word.", DialogLayout.Full)
     game.showLongText("A word will be given with mixed up letters. ", DialogLayout.Full)
-    game.showLongText("Convert five scrambled words to the right word to win the game!", DialogLayout.Full)
+    game.showLongText("Convert ten scrambled words to the right word to win the game!", DialogLayout.Full)
     wordList = [
     "eohsu",
     "lepna",
@@ -189,15 +189,28 @@ function wordUnscramble () {
     "indubitably",
     "instrument"
     ]
-    for (let index2 = 0; index2 < 5; index2++) {
-        answer = game.askForString(wordList.shift())
-        if (answer == wordList.shift()) {
-            info.changeScoreBy(1)
-        } else {
-            info.changeScoreBy(-1)
+    correctWords = [
+    "house",
+    "plane",
+    "capital",
+    "hopeless",
+    "flippant",
+    "definitely",
+    "calendar",
+    "achieve",
+    "indubitably",
+    "instrument"
+    ]
+    for (let index2 = 0; index2 < 10; index2++) {
+        answer = game.askForString(wordList.pop())
+        for (let value of correctWords) {
+            if (value == answer) {
+                info.changeScoreBy(1)
+            }
         }
     }
-    if (info.score() == 5) {
+    if (info.score() >= 5) {
+        game.gameOver(true)
         game.setGameOverEffect(true, effects.confetti)
     } else {
         game.splash("Try Again!")
@@ -598,6 +611,7 @@ let Person: Sprite = null
 let Investigator: Sprite = null
 let game3 = false
 let answer = ""
+let correctWords: string[] = []
 let wordList: string[] = []
 let books = ""
 let travel = ""

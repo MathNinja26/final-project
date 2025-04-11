@@ -422,7 +422,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Suspect, function (sprite, other
                                 decision = game.askForString("yes or no, would you like to ask for an alibi?", 3)
                                 if (decision == "yes") {
                                     otherSprite.sayText(alibi[randint(0, 5)])
-                                    pause(2000)
+                                    pause(3000)
                                     otherSprite.sayText(":)")
                                     pause(2000)
                                     sprites.destroy(otherSprite)
@@ -439,7 +439,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Suspect, function (sprite, other
                                 decision = game.askForString("yes or no, would you like to ask for an alibi?", 3)
                                 if (decision == "yes") {
                                     otherSprite.sayText(alibi[randint(0, 5)])
-                                    pause(2000)
+                                    pause(3000)
                                     otherSprite.sayText(":)")
                                     pause(2000)
                                     sprites.destroy(otherSprite)
@@ -465,7 +465,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Suspect, function (sprite, other
                                 decision = game.askForString("yes or no, would you like to ask for an alibi?", 3)
                                 if (decision == "yes") {
                                     otherSprite.sayText(alibi[randint(0, 5)])
-                                    pause(2000)
+                                    pause(3000)
                                     otherSprite.sayText(":)")
                                     pause(2000)
                                     sprites.destroy(otherSprite)
@@ -482,7 +482,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Suspect, function (sprite, other
                                 decision = game.askForString("yes or no, would you like to ask for an alibi?", 3)
                                 if (decision == "yes") {
                                     otherSprite.sayText(alibi[randint(0, 5)])
-                                    pause(2000)
+                                    pause(3000)
                                     otherSprite.sayText(":)")
                                     pause(2000)
                                     sprites.destroy(otherSprite)
@@ -517,7 +517,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Suspect, function (sprite, other
                                 decision = game.askForString("yes or no, would you like to ask for an alibi?", 3)
                                 if (decision == "yes") {
                                     otherSprite.sayText(alibi[randint(0, 5)])
-                                    pause(2000)
+                                    pause(3000)
                                     otherSprite.sayText(":)")
                                     pause(2000)
                                     sprites.destroy(otherSprite)
@@ -560,7 +560,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Suspect, function (sprite, other
                                 decision = game.askForString("yes or no, would you like to ask for an alibi?", 3)
                                 if (decision == "yes") {
                                     otherSprite.sayText(alibi[randint(0, 5)])
-                                    pause(2000)
+                                    pause(3000)
                                     otherSprite.sayText(":)")
                                     pause(2000)
                                     sprites.destroy(otherSprite)
@@ -577,7 +577,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Suspect, function (sprite, other
                                 decision = game.askForString("yes or no, would you like to ask for an alibi?", 3)
                                 if (decision == "yes") {
                                     otherSprite.sayText(alibi[randint(0, 5)])
-                                    pause(2000)
+                                    pause(3000)
                                     otherSprite.sayText(":)")
                                     pause(2000)
                                     sprites.destroy(otherSprite)

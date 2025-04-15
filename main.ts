@@ -343,6 +343,7 @@ function whoDidIt () {
         `, SpriteKind.birthdayGirl)
     tiles.placeOnTile(Jane, tiles.getTileLocation(8, 10))
 }
+// Coded by Esther Dentel.
 controller.menu.onEvent(ControllerButtonEvent.Pressed, function () {
     if (game3 == true) {
         guess = game.askForString("Who is the suspect?")
@@ -603,6 +604,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Suspect, function (sprite, other
     }
     sprites.destroy(otherSprite)
 })
+// Coded by Esther Dentel.
 let index = 0
 let guess = ""
 let Jane: Sprite = null

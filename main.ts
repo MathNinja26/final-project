@@ -70,6 +70,7 @@ function createFourArrays () {
     "I was complimenting the chef."
     ]
 }
+// Coded by Esther Dentel.
 sprites.onOverlap(SpriteKind.Player, SpriteKind.birthdayGirl, function (sprite, otherSprite) {
     sprite.sayText("Hi.", 500, false)
     pause(100)
@@ -350,6 +351,7 @@ controller.menu.onEvent(ControllerButtonEvent.Pressed, function () {
         isItRight(guess)
     }
 })
+// Coded by Esther Dentel.
 sprites.onOverlap(SpriteKind.Player, SpriteKind.guilty, function (sprite, otherSprite) {
     points = 0
     while (points == 0) {

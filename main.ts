@@ -70,7 +70,6 @@ function createFourArrays () {
     "I was complimenting the chef."
     ]
 }
-// Coded by Esther Dentel.
 sprites.onOverlap(SpriteKind.Player, SpriteKind.birthdayGirl, function (sprite, otherSprite) {
     sprite.sayText("Hi.", 500, false)
     pause(100)
@@ -124,6 +123,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.birthdayGirl, function (sprite, 
     game.showLongText("Cadence runs out of the room, clearly still upset about how her party turned out.", DialogLayout.Full)
     sprites.destroy(otherSprite)
 })
+// Function thisORThat coded by Lydia Edwards
 function thisORThat () {
     scene.setBackgroundColor(3)
     Cats = game.askForString("Do you prefer Cats or Dogs?", 4)
@@ -173,6 +173,7 @@ function thisORThat () {
         game.splash("GAME OVER")
     }
 }
+// function wordUnscramble coded by Luke Lattin.
 function wordUnscramble () {
     info.setScore(0)
     game.showLongText("The purpose of this game is to unscramble the given word.", DialogLayout.Full)
@@ -217,6 +218,7 @@ function wordUnscramble () {
         game.splash("Try Again!")
     }
 }
+
 function whoDidIt () {
     music.play(music.stringPlayable("D E D E D E D C ", 200), music.PlaybackMode.LoopingInBackground)
     game3 = true
@@ -344,14 +346,12 @@ function whoDidIt () {
         `, SpriteKind.birthdayGirl)
     tiles.placeOnTile(Jane, tiles.getTileLocation(8, 10))
 }
-// Coded by Esther Dentel.
 controller.menu.onEvent(ControllerButtonEvent.Pressed, function () {
     if (game3 == true) {
         guess = game.askForString("Who is the suspect?")
         isItRight(guess)
     }
 })
-// Coded by Esther Dentel.
 sprites.onOverlap(SpriteKind.Player, SpriteKind.guilty, function (sprite, otherSprite) {
     points = 0
     while (points == 0) {
@@ -606,7 +606,6 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Suspect, function (sprite, other
     }
     sprites.destroy(otherSprite)
 })
-// Coded by Esther Dentel.
 let index = 0
 let guess = ""
 let Jane: Sprite = null
